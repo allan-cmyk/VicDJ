@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ========== Design tokens — AV Productionz Cinematic Dark-Luxe ========== */
+:root {
+  /* Core palette */
+  --ink: #0a0a0b;
+  --ink-soft: #141416;
+  --ivory: #f4efe6;
+  --champagne: #e7c98b;
+  --champagne-strong: #f0d49a;
+  --amber: #f2a74b;
+  --muted: #8a8378;
+
+  /* Semantic */
+  --error: #e76f51;
+  --success: #7bbfa0;
+
+  /* Shadows */
+  --shadow-glow: 0 24px 60px -20px rgba(231, 201, 139, 0.25);
+
+  /* Layout */
+  --container-max: 1320px;
+
+  /* Motion */
+  --ease-reveal: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-interactive: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Map tokens to Tailwind v4 theme */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ivory: var(--ivory);
+  --color-champagne: var(--champagne);
+  --color-amber: var(--amber);
+  --color-muted: var(--muted);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --animate-marquee: marquee 55s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Base */
+html, body {
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--champagne);
+  color: var(--ink);
+}
+
+/* Scrollbar — subtle on dark */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 239, 230, 0.12);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(231, 201, 139, 0.3);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+.text-ivory     { color: var(--ivory); }
+.text-champagne { color: var(--champagne); }
+.text-amber     { color: var(--amber); }
+.text-muted     { color: var(--muted); }
+
+.bg-ink       { background-color: var(--ink); }
+.bg-ink-soft  { background-color: var(--ink-soft); }
+.bg-ivory     { background-color: var(--ivory); }
+.bg-champagne { background-color: var(--champagne); }
+.bg-amber     { background-color: var(--amber); }
+
+.border-champagne { border-color: var(--champagne); }
+.border-ivory     { border-color: var(--ivory); }
