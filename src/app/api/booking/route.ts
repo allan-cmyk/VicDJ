@@ -32,6 +32,14 @@ export async function POST(request: Request) {
   }
 
   if (!resend) {
+    if (process.env.NODE_ENV === "production") {
+      // Never fake success in production — a silently dropped lead is the worst outcome.
+      console.error("[booking] RESEND_API_KEY missing in production — inquiry NOT delivered:", booking)
+      return NextResponse.json(
+        { message: "Our inquiry inbox is briefly offline — call or text 361-945-2522, or DM @djtr3y on Instagram." },
+        { status: 503 }
+      )
+    }
     console.error("[booking] RESEND_API_KEY missing — inquiry logged but not emailed:", booking)
     // In dev without a key, we still succeed so form UX is testable.
     return NextResponse.json({ ok: true, dev: true }, { status: 200 })

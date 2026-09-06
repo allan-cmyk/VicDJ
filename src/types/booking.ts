@@ -48,8 +48,10 @@ export const bookingSchema = z.object({
     message: "Rough budget helps us scope",
   }),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
-  // Honeypot — real users will never fill this.
-  website: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot — real users never fill this. Deliberately ACCEPTS any value so
+  // validation doesn't 400 (and name the trap field!) before the route's
+  // silent-success branch can spring on the bot.
+  website: z.string().max(200).optional().or(z.literal("")),
 })
 
 export type BookingInput = z.infer<typeof bookingSchema>
