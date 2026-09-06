@@ -41,11 +41,8 @@ export function CountUp({ value, duration = 1600, className }: CountUpProps) {
   const [displayed, setDisplayed] = useState(pad > 0 ? "0".padStart(pad, "0") : "0")
 
   useEffect(() => {
-    if (!inView) return
-    if (reduced) {
-      setDisplayed(match ? match[1] : value)
-      return
-    }
+    // Reduced motion renders the final value directly (see below) — no animation.
+    if (!inView || reduced) return
     mv.set(target)
     const unsub = rounded.on("change", (v) => setDisplayed(v))
     // Safety fallback: ensure final value after duration even if spring over/undershoots.
@@ -65,7 +62,7 @@ export function CountUp({ value, duration = 1600, className }: CountUpProps) {
 
   return (
     <motion.span ref={ref} className={className}>
-      {displayed}
+      {reduced ? match[1] : displayed}
       {suffix}
     </motion.span>
   )

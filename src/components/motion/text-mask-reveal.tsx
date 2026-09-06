@@ -62,7 +62,9 @@ export function TextMaskReveal({
 
   return (
     <Tag ref={ref as never} className={cn("relative", className)}>
-      <span className="sr-only">{stringify(children)}</span>
+      {/* Render the real children here (not a JS-flattened string): identical
+          JSX on server and client, so hydration can never diverge. */}
+      <span className="sr-only">{children}</span>
       <span aria-hidden className="inline">
         {tokens.map((t, i) =>
           t.kind === "word" && /\S/.test(t.text) ? (
@@ -95,15 +97,4 @@ export function TextMaskReveal({
       </span>
     </Tag>
   )
-}
-
-function stringify(node: React.ReactNode): string {
-  if (node == null || typeof node === "boolean") return ""
-  if (typeof node === "string" || typeof node === "number") return String(node)
-  if (Array.isArray(node)) return node.map(stringify).join("")
-  if (typeof node === "object" && node && "props" in node) {
-    const p = (node as { props: { children?: React.ReactNode } }).props
-    return stringify(p.children)
-  }
-  return ""
 }
