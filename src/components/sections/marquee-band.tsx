@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-const ITEMS = [
+const DEFAULT_ITEMS = [
   "Book Now",
   "Austin",
   "Weddings",
@@ -14,14 +14,18 @@ const ITEMS = [
 
 interface MarqueeBandProps {
   className?: string
+  /** Run right-to-left → left-to-right instead of the default direction. */
+  reverse?: boolean
+  items?: readonly string[]
 }
 
 /**
  * Thin scrolling text band that sits between sections — evokes an editorial
  * luxury-brand website. Two copies of the list rendered for seamless loop,
- * `animation-play-state: paused` on hover.
+ * `animation-play-state: paused` on hover. `reverse` flips direction so two
+ * bands on one page feel like moving layers, not a copy-paste.
  */
-export function MarqueeBand({ className }: MarqueeBandProps) {
+export function MarqueeBand({ className, reverse = false, items = DEFAULT_ITEMS }: MarqueeBandProps) {
   return (
     <section
       aria-hidden
@@ -32,22 +36,25 @@ export function MarqueeBand({ className }: MarqueeBandProps) {
       )}
     >
       <div className="group flex py-6 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <MarqueeRow />
-        <MarqueeRow />
+        <MarqueeRow reverse={reverse} items={items} />
+        <MarqueeRow reverse={reverse} items={items} />
       </div>
     </section>
   )
 }
 
-function MarqueeRow() {
+function MarqueeRow({ reverse, items }: { reverse: boolean; items: readonly string[] }) {
   return (
     <ul
       className={cn(
         "flex shrink-0 items-center gap-10 pr-10 whitespace-nowrap",
-        "animate-[marquee_38s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+        reverse
+          ? "animate-[marquee-reverse_46s_linear_infinite]"
+          : "animate-[marquee_38s_linear_infinite]",
+        "group-hover:[animation-play-state:paused] motion-reduce:animate-none"
       )}
     >
-      {ITEMS.map((item, i) => (
+      {items.map((item, i) => (
         <li
           key={`${item}-${i}`}
           className="flex items-center gap-10 font-display italic text-[clamp(1.5rem,2.6vw,2.25rem)] text-champagne/85"

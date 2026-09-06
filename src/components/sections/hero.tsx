@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -19,6 +19,8 @@ interface HeroProps {
   className?: string
 }
 
+const PILLARS = ["Weddings", "Corporate", "Nightlife", "Cruise"] as const
+
 /**
  * Hero — full-viewport cinematic video background with gradient scrim and a single
  * editorial headline. Serves WebM first (smaller / better quality) with MP4 fallback.
@@ -33,6 +35,14 @@ export function Hero({
 }: HeroProps) {
   const ref = useRef<HTMLElement>(null)
   const reduced = useReducedMotion()
+  const [activePillar, setActivePillar] = useState(0)
+
+  // Cycle the pillar strip — a quiet heartbeat that keeps the hero alive.
+  useEffect(() => {
+    if (reduced) return
+    const id = setInterval(() => setActivePillar((p) => (p + 1) % PILLARS.length), 2400)
+    return () => clearInterval(id)
+  }, [reduced])
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -137,10 +147,24 @@ export function Hero({
           transition={{ duration: 1.2, ease: EASING.smooth, delay: 0.8 }}
           className="mt-16 flex items-end justify-between gap-6"
         >
-          <div className="hidden md:flex flex-1 items-center gap-4 text-ivory/55">
+          <div className="flex flex-1 items-center gap-4 text-ivory/55">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-              Weddings · Corporate · Nightlife · Cruise
+            <span className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-[0.2em] md:text-[11px] md:tracking-[0.28em]">
+              {PILLARS.map((pillar, i) => (
+                <span key={pillar} className="flex items-center gap-x-2">
+                  {i > 0 ? <span aria-hidden className="text-ivory/30">·</span> : null}
+                  <span
+                    className={cn(
+                      "transition-colors duration-700",
+                      i === activePillar
+                        ? "text-champagne [text-shadow:0_0_18px_rgba(231,201,139,0.45)]"
+                        : "text-ivory/50"
+                    )}
+                  >
+                    {pillar}
+                  </span>
+                </span>
+              ))}
             </span>
             <span className="h-px flex-1 bg-gradient-to-r from-champagne/40 via-transparent to-transparent" />
           </div>
