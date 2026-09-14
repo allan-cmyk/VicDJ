@@ -6,6 +6,10 @@ The **only** missing piece is a Resend API key.
 
 ## 1. Create the key
 1. Sign up (free) at <https://resend.com> — 100 emails/day, no card needed.
+   **⚠️ Sign up WITH `info.avproz@gmail.com`** (Vic's booking inbox). Until a domain
+   is verified, Resend only delivers to the account's own email address — an account
+   under any other email means bookings to Vic's Gmail get rejected. (Alternative:
+   sign up with your own email and switch `BOOKING_TO_EMAIL` on Vercel to match.)
 2. Dashboard → **API Keys** → **Create API Key** → name `avproductionz-site`, permission *Sending access*.
 3. Copy the key (starts with `re_`).
 
