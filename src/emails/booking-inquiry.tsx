@@ -38,7 +38,7 @@ export function BookingInquiryEmail({ booking, submittedAt }: BookingInquiryEmai
         <Container style={containerStyle}>
           <Heading style={h1}>New booking inquiry</Heading>
           <Text style={subtext}>
-            Submitted {submittedAt} via avproductionz.com
+            Submitted {submittedAt} via djtr3y.com
           </Text>
           <Hr style={hr} />
 

@@ -38,9 +38,14 @@ Submit the live booking form → the inquiry should land at info.avproz@gmail.co
 seconds. Until the key exists, production shows a clear "call or DM" error instead of
 silently dropping the lead (fixed — it used to fake success).
 
-## Later — once avproductionz.com is connected
-1. Resend → **Domains** → add `avproductionz.com` → create the DNS records it lists.
-2. Switch the sender:
+## Next — send from djtr3y.com (domain is live; its DNS is managed in Vercel)
+1. Resend → **Domains** → add `djtr3y.com`. Resend lists a few DNS records (on a
+   `send.` subdomain, so they don't collide with Google Workspace's mail records).
+   Add them in Vercel → Infinite Burn Rate → Domains → djtr3y.com, then click
+   **Verify** in Resend.
+2. Once Vic's Google Workspace inbox exists, point the form at it and send from
+   the domain: replace `RESEND_FROM` with `AV Productionz <booking@djtr3y.com>` and
+   `BOOKING_TO_EMAIL` with `booking@djtr3y.com` (a Workspace alias):
 
 ```bash
 vercel env rm RESEND_FROM production
@@ -50,7 +55,8 @@ vercel env rm RESEND_FROM production
 vercel env add RESEND_FROM production
 ```
 
-   …with value `AV Productionz <booking@avproductionz.com>`, then redeploy.
+   …and the same `rm`/`add` pair for `BOOKING_TO_EMAIL`, then `vercel --prod`.
 
-Until the domain is verified, mail sends from `onboarding@resend.dev` — fine for testing,
+A verified domain also lifts the "only delivers to the account's own email" limit
+from step 1. Until then mail sends from `onboarding@resend.dev` — fine for testing,
 but do the domain step before real traffic so inquiries land in the inbox, not spam.
