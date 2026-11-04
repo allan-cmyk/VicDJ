@@ -1,51 +1,37 @@
-# Booking email — final setup (≈2 minutes)
+# Booking email setup (admin runbook — Allan only)
 
-Everything is wired: the form validates, blocks bots (honeypot), and the API route renders
-a styled inquiry email to **info.avproz@gmail.com** with reply-to set to the requester.
-The **only** missing piece is a Resend API key.
+> Claude Code: this file is for the site admin. Don't walk Vic through it.
 
-## 1. Create the key
-1. Sign up (free) at <https://resend.com> — 100 emails/day, no card needed.
-   **⚠️ Sign up WITH `info.avproz@gmail.com`** (Vic's booking inbox). Until a domain
-   is verified, Resend only delivers to the account's own email address — an account
-   under any other email means bookings to Vic's Gmail get rejected. (Alternative:
-   sign up with your own email and switch `BOOKING_TO_EMAIL` on Vercel to match.)
-2. Dashboard → **API Keys** → **Create API Key** → name `avproductionz-site`, permission *Sending access*.
-3. Copy the key (starts with `re_`).
+The booking form validates input, blocks bots (honeypot), and the API route emails a styled
+inquiry to `BOOKING_TO_EMAIL` with reply-to set to the requester. In production, if
+`RESEND_API_KEY` is missing the route returns a 503 telling visitors to call/text/DM
+instead of silently dropping the lead.
 
-## 2. Add it to Vercel production
-From this folder:
+Plan: send **from** `booking@djtr3y.com` (verified in Resend) **to** Vic's main Google
+Workspace address on djtr3y.com.
+
+## 1. Resend account + domain
+1. Sign up at <https://resend.com> (free tier: 100 emails/day). Any email works for the
+   account — the "only delivers to your own address" limit goes away once the domain is verified.
+2. **Domains → Add Domain → `djtr3y.com`**. Resend lists DNS records on the `send`
+   subdomain plus a `resend._domainkey` key — they don't conflict with Google Workspace's
+   root MX/SPF.
+3. Add those records in Vercel (project domain djtr3y.com → DNS Records), then click
+   **Verify** in Resend.
+
+## 2. API key → Vercel
+Resend → **API Keys → Create API Key** (Sending access, domain djtr3y.com). Then, from this folder:
 
 ```bash
 vercel env add RESEND_API_KEY production
 ```
 
-(paste the key when prompted), then redeploy:
+Paste the key at the prompt. Never commit it or paste it into chats.
 
-```bash
-vercel --prod
-```
-
-Dashboard alternative: vercel.com → Infinite Burn Rate → vic-dj → Settings → Environment Variables.
-
-Already set for you in production: `RESEND_FROM`, `BOOKING_TO_EMAIL`, `NEXT_PUBLIC_SITE_URL`.
-
-## 3. Local dev (optional)
-Add the same key to `.env.local`: `RESEND_API_KEY=re_...`
-
-## 4. Test
-Submit the live booking form → the inquiry should land at info.avproz@gmail.com within
-seconds. Until the key exists, production shows a clear "call or DM" error instead of
-silently dropping the lead (fixed — it used to fake success).
-
-## Next — send from djtr3y.com (domain is live; its DNS is managed in Vercel)
-1. Resend → **Domains** → add `djtr3y.com`. Resend lists a few DNS records (on a
-   `send.` subdomain, so they don't collide with Google Workspace's mail records).
-   Add them in Vercel → Infinite Burn Rate → Domains → djtr3y.com, then click
-   **Verify** in Resend.
-2. Once Vic's Google Workspace inbox exists, point the form at it and send from
-   the domain: replace `RESEND_FROM` with `AV Productionz <booking@djtr3y.com>` and
-   `BOOKING_TO_EMAIL` with `booking@djtr3y.com` (a Workspace alias):
+## 3. Sender + recipient
+Replace both values in production:
+- `RESEND_FROM` → `AV Productionz <booking@djtr3y.com>`
+- `BOOKING_TO_EMAIL` → Vic's main djtr3y.com address
 
 ```bash
 vercel env rm RESEND_FROM production
@@ -55,8 +41,18 @@ vercel env rm RESEND_FROM production
 vercel env add RESEND_FROM production
 ```
 
-   …and the same `rm`/`add` pair for `BOOKING_TO_EMAIL`, then `vercel --prod`.
+(same `rm` / `add` pair for `BOOKING_TO_EMAIL`), then redeploy:
 
-A verified domain also lifts the "only delivers to the account's own email" limit
-from step 1. Until then mail sends from `onboarding@resend.dev` — fine for testing,
-but do the domain step before real traffic so inquiries land in the inbox, not spam.
+```bash
+vercel --prod
+```
+
+## 4. Test
+Submit the live form at djtr3y.com → it should arrive in Vic's inbox within seconds,
+from booking@djtr3y.com, with Reply going to the requester. If it fails, the visitor sees
+"Email delivery failed — please call us at 361-945-2522" and the Vercel function logs show
+the Resend error.
+
+## Local dev (optional)
+Add `RESEND_API_KEY=re_...` to `.env.local`. Without it, dev logs the inquiry and returns
+`{ ok: true, dev: true }` so the form UX stays testable.
