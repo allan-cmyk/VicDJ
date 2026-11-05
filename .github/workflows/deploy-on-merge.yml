@@ -1,0 +1,40 @@
+# Production deploys for merges by collaborators who aren't on the Vercel team.
+#
+# Vercel's Git integration builds previews for every collaborator, but it silently
+# skipped production when Vic (a GitHub collaborator, not a Vercel team member)
+# merged PR #1. This workflow pings a Vercel Deploy Hook for `main` whenever
+# someone other than the Vercel team members pushes to main.
+#
+# Setup: Vercel → vic-dj → Settings → Git → Deploy Hooks → create one for `main`,
+# then store its URL as the repo secret VERCEL_DEPLOY_HOOK_MAIN. The URL is a
+# credential — never commit it.
+
+name: Deploy production on collaborator merge
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: vercel-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Pushes by Vercel team members already deploy through the Git integration.
+    if: github.actor != 'allan-cmyk' && github.actor != 'matthewtrundle'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger Vercel production deploy hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_MAIN }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK_MAIN is not set; skipping deploy"
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK"
+          echo "Deploy hook triggered for ${GITHUB_SHA::7} (pushed by ${GITHUB_ACTOR})"

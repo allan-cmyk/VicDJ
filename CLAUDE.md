@@ -12,6 +12,7 @@ Usually **Vic**, the business owner. He is not a developer.
 
 - **Content changes only.** Never change environment variables, DNS, Vercel settings, or the Resend setup, and never ask for API keys, passwords, or codes. Those belong to Allan (the site's admin). If a request needs them, say so and stop.
 - `EMAIL-SETUP.md` is Allan's runbook. Don't walk Vic through it.
+- Don't edit `.github/workflows/`. It's what publishes Vic's merges to the live site.
 - **This repo is public.** Don't commit client phone numbers or emails, private pricing, addresses, or testimonials without the client's permission. If Vic's request includes any of these, point it out before saving.
 - **Never invent** testimonials, client names, stats, or reviews.
   - `src/data/testimonials.ts` and the headline quote in `src/components/sections/testimonials.tsx` are placeholders.
