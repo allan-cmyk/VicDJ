@@ -22,7 +22,6 @@ export function Logo({ className, variant = "full" }: LogoProps) {
   return (
     <span className={cn("inline-flex items-baseline gap-2.5", className)}>
       <span
-        aria-hidden
         className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-champagne/60 text-champagne font-display text-[12px] tracking-[0.14em]"
       >
         AV
