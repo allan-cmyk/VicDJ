@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { render } from "@react-email/render"
 import { bookingSchema } from "@/types/booking"
 import { resend, resendConfig } from "@/lib/resend"
 import { BookingInquiryEmail } from "@/emails/booking-inquiry"
@@ -46,19 +47,28 @@ export async function POST(request: Request) {
   }
 
   try {
+    // Render to HTML ourselves rather than passing `react:` — Resend's SDK
+    // lazy-loads @react-email/render for that, which failed in production.
+    const email = BookingInquiryEmail({
+      booking,
+      submittedAt: new Date().toLocaleString("en-US", {
+        timeZone: "America/Chicago",
+        dateStyle: "full",
+        timeStyle: "short",
+      }),
+    })
+    const [html, text] = await Promise.all([
+      render(email),
+      render(email, { plainText: true }),
+    ])
+
     const { error } = await resend.emails.send({
       from: resendConfig.from,
       to: [resendConfig.to],
       replyTo: booking.email,
       subject: `Booking inquiry — ${booking.name} · ${booking.eventType} · ${booking.eventDate}`,
-      react: BookingInquiryEmail({
-        booking,
-        submittedAt: new Date().toLocaleString("en-US", {
-          timeZone: "America/Chicago",
-          dateStyle: "full",
-          timeStyle: "short",
-        }),
-      }),
+      html,
+      text,
     })
 
     if (error) {
