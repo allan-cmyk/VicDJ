@@ -23,6 +23,7 @@ export function Mixes() {
           width="100%"
           height="300"
           allow="autoplay"
+          loading="lazy"
           src={url}
           className="border-0"
         />

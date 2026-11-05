@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/hero"
 import { MediaFilmstrip } from "@/components/sections/media-filmstrip"
 import { Services } from "@/components/sections/services"
 import { ClientMarquee } from "@/components/sections/client-marquee"
-import { HighlightsCarousel } from "@/components/sections/highlights-carousel"
+import { Highlights } from "@/components/sections/highlights"
 import { MarqueeBand } from "@/components/sections/marquee-band"
 import { Gallery } from "@/components/sections/gallery"
 import { InstagramBand } from "@/components/sections/instagram-band"
@@ -23,7 +23,7 @@ export default function HomePage() {
         <MediaFilmstrip />
         <Services />
         <ClientMarquee />
-        <HighlightsCarousel />
+        <Highlights />
         <MarqueeBand />
         <Gallery />
         <InstagramBand />

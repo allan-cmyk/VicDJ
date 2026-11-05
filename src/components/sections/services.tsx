@@ -1,14 +1,10 @@
-"use client"
-
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { EyebrowLabel } from "@/components/ui/eyebrow-label"
 import { Reveal } from "@/components/motion/reveal"
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal"
 import { services, type Service } from "@/data/services"
-import { EASING } from "@/lib/motion-config"
 import { cn } from "@/lib/utils"
 
 export function Services() {
@@ -53,13 +49,12 @@ function ServiceCard({
   reverse: boolean
 }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9, ease: EASING.reveal, delay: index * 0.05 }}
+    <Reveal
+      as="article"
+      amount={0.2}
+      delay={index * 0.05}
       className={cn(
-        "relative grid gap-10 lg:gap-16 items-center",
+        "relative grid gap-10 lg:gap-16 items-center [--reveal-distance:40px]",
         "lg:grid-cols-[1.1fr_1fr]",
         reverse && "lg:[&>*:first-child]:order-2"
       )}
@@ -85,16 +80,13 @@ function ServiceCard({
           {service.number}
         </div>
 
-        <motion.div
-          whileHover={{ scale: 1.015 }}
-          transition={{ duration: 0.6, ease: EASING.smooth }}
-          className="relative z-10 aspect-[4/5] lg:aspect-[5/6] overflow-hidden rounded-sm ring-1 ring-ivory/8"
-        >
+        <div className="relative z-10 aspect-[4/5] lg:aspect-[5/6] overflow-hidden rounded-sm ring-1 ring-ivory/8 transition-transform duration-[600ms] hover:scale-[1.015] motion-reduce:hover:scale-100">
           <Image
             src={service.image}
             alt={service.imageAlt}
             fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            sizes="(min-width: 1320px) 640px, (min-width: 1024px) 50vw, 100vw"
+            quality={60}
             className="object-cover"
           />
           {/* Color wash that reinforces the pillar identity */}
@@ -118,7 +110,7 @@ function ServiceCard({
               {service.eyebrow}
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Text side */}
@@ -170,6 +162,6 @@ function ServiceCard({
           <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
         </a>
       </div>
-    </motion.article>
+    </Reveal>
   )
 }

@@ -1,59 +1,34 @@
-"use client"
-
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
-import { EASING, DURATION, TRANSFORM } from "@/lib/motion-config"
+import type { CSSProperties } from "react"
+import { InView } from "@/components/motion/in-view"
 
 interface RevealProps {
   children: React.ReactNode
   direction?: "up" | "down" | "left" | "right"
+  /** Seconds to wait after the element enters the viewport. */
   delay?: number
-  duration?: number
   className?: string
-  once?: boolean
   amount?: number
   as?: "div" | "section" | "article" | "header" | "footer"
 }
 
-const offsets = {
-  up: { y: TRANSFORM.reveal.y, x: 0 },
-  down: { y: -TRANSFORM.reveal.y, x: 0 },
-  left: { x: TRANSFORM.reveal.y, y: 0 },
-  right: { x: -TRANSFORM.reveal.y, y: 0 },
-}
-
+/** Fades and slides its children in once. Styles: `[data-reveal]` in globals.css. */
 export function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = DURATION.reveal,
-  className = "",
-  once = true,
+  className,
   amount = 0.25,
   as = "div",
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once, amount })
-  const reduced = useReducedMotion()
-
-  if (reduced) {
-    const Tag = as as "div"
-    return <Tag className={className}>{children}</Tag>
-  }
-
-  const offset = offsets[direction]
-  const MotionTag = motion[as] as typeof motion.div
-
   return (
-    <MotionTag
-      ref={ref}
-      initial={{ opacity: 0, ...offset }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, ...offset }}
-      transition={{ duration, delay, ease: EASING.reveal }}
+    <InView
+      as={as}
+      amount={amount}
+      data-reveal={direction}
       className={className}
+      style={delay ? ({ "--reveal-delay": `${delay}s` } as CSSProperties) : undefined}
     >
       {children}
-    </MotionTag>
+    </InView>
   )
 }

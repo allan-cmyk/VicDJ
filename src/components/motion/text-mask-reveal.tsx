@@ -1,100 +1,68 @@
-"use client"
+import "server-only"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
-import { cn } from "@/lib/utils"
+import { isValidElement, type CSSProperties, type ReactNode } from "react"
+import { InView } from "@/components/motion/in-view"
 
 interface TextMaskRevealProps {
-  children: React.ReactNode
+  children: ReactNode
   className?: string
-  /** Stagger between words (seconds). */
-  stagger?: number
-  /** Per-word duration (seconds). */
-  duration?: number
   /** HTML tag to render as. */
   as?: "h1" | "h2" | "h3" | "p" | "div"
 }
 
+type Token = { kind: "word"; text: string } | { kind: "space"; text: string } | { kind: "node"; node: ReactNode }
+
+function tokenize(node: ReactNode, tokens: Token[] = []): Token[] {
+  if (node == null || typeof node === "boolean") return tokens
+  if (typeof node === "string" || typeof node === "number") {
+    for (const part of String(node).split(/(\s+)/)) {
+      if (part) tokens.push({ kind: /\S/.test(part) ? "word" : "space", text: part })
+    }
+    return tokens
+  }
+  if (Array.isArray(node)) {
+    node.forEach((child) => tokenize(child, tokens))
+    return tokens
+  }
+  tokens.push({ kind: "node", node })
+  return tokens
+}
+
+function plainText(node: ReactNode): string {
+  if (node == null || typeof node === "boolean") return ""
+  if (typeof node === "string" || typeof node === "number") return String(node)
+  if (Array.isArray(node)) return node.map(plainText).join("")
+  if (isValidElement<{ children?: ReactNode }>(node)) return plainText(node.props.children)
+  return ""
+}
+
 /**
- * Splits plain-text children into words and reveals each one by rising out
- * from behind an invisible mask. Preserves nested React nodes (e.g. <em>)
- * as atomic units so inline emphasis still works.
+ * Splits children into words and raises each one from behind a mask. Nested
+ * elements such as <em> stay whole.
  *
- * Accessibility: the full text is rendered in a visually-hidden sibling
- * so screen readers read one continuous phrase, not word-by-word.
+ * The heading text is in the HTML once, so crawlers read it once. Screen readers
+ * get the full phrase from aria-label instead of word by word.
+ *
+ * Server-only on purpose: plainText() reads React elements, and doing that on both
+ * server and client caused hydration mismatches before (commit 865ed05). Client
+ * components should take the heading as a prop, as HighlightsCarousel does.
  */
-export function TextMaskReveal({
-  children,
-  className,
-  stagger = 0.06,
-  duration = 0.8,
-  as: Tag = "h2",
-}: TextMaskRevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.4 })
-  const reduced = useReducedMotion()
-
-  // Split children into an array of "tokens" — each is either a plain word
-  // or a React element (kept atomic).
-  const tokens: Array<{ kind: "word"; text: string } | { kind: "node"; node: React.ReactNode }> = []
-
-  const walk = (node: React.ReactNode): void => {
-    if (node == null || typeof node === "boolean") return
-    if (typeof node === "string" || typeof node === "number") {
-      for (const w of String(node).split(/(\s+)/)) {
-        if (!w) continue
-        tokens.push({ kind: "word", text: w })
-      }
-      return
-    }
-    if (Array.isArray(node)) {
-      node.forEach(walk)
-      return
-    }
-    tokens.push({ kind: "node", node })
-  }
-  walk(children)
-
-  if (reduced) {
-    return <Tag className={className}>{children}</Tag>
-  }
-
+export function TextMaskReveal({ children, className, as = "h2" }: TextMaskRevealProps) {
   return (
-    <Tag ref={ref as never} className={cn("relative", className)}>
-      {/* Render the real children here (not a JS-flattened string): identical
-          JSX on server and client, so hydration can never diverge. */}
-      <span className="sr-only">{children}</span>
-      <span aria-hidden className="inline">
-        {tokens.map((t, i) =>
-          t.kind === "word" && /\S/.test(t.text) ? (
-            <span key={i} className="inline-block overflow-hidden align-bottom">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={inView ? { y: 0 } : { y: "110%" }}
-                transition={{ duration, delay: i * stagger, ease: [0.19, 1, 0.22, 1] }}
-                className="inline-block"
-              >
-                {t.text}
-              </motion.span>
-            </span>
-          ) : t.kind === "word" ? (
-            // whitespace — keep as a literal space so words don't run together
-            <span key={i}>{t.text}</span>
+    <InView as={as} amount={0.4} data-mask="" aria-label={plainText(children)} className={className}>
+      <span aria-hidden>
+        {tokenize(children).map((token, i) =>
+          token.kind === "space" ? (
+            <span key={i}>{token.text}</span>
           ) : (
-            <span key={i} className="inline-block overflow-hidden align-bottom">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={inView ? { y: 0 } : { y: "110%" }}
-                transition={{ duration, delay: i * stagger, ease: [0.19, 1, 0.22, 1] }}
-                className="inline-block"
-              >
-                {t.node}
-              </motion.span>
+            <span key={i} className="mask-word">
+              <span style={{ "--i": i } as CSSProperties}>
+                {token.kind === "word" ? token.text : token.node}
+              </span>
             </span>
           )
         )}
       </span>
-    </Tag>
+    </InView>
   )
 }
