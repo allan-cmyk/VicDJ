@@ -14,8 +14,8 @@ export const siteConfig = {
   contact: {
     phone: "361-945-2522",
     phoneHref: "tel:+13619452522",
-    email: "info.avproz@gmail.com",
-    emailHref: "mailto:info.avproz@gmail.com",
+    email: "vic@djtr3y.com",
+    emailHref: "mailto:vic@djtr3y.com",
   },
   socials: {
     instagram: {
