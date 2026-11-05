@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils"
 
 interface HeroProps {
   videoMp4?: string
-  videoWebm?: string
   poster?: string
   className?: string
 }
@@ -23,14 +22,14 @@ const PILLARS = ["Weddings", "Corporate", "Nightlife", "Cruise"] as const
 
 /**
  * Hero — full-viewport cinematic video background with gradient scrim and a single
- * editorial headline. Serves WebM first (smaller / better quality) with MP4 fallback.
+ * editorial headline. The video is a vertical rooftop-sunset clip (H.264 MP4, no audio);
+ * object-position keeps Vic and the horizon in frame when it's cropped to a wide screen.
  * Scroll-linked parallax: video scales up & drifts down slowly; text rises at a
  * different rate so the layers feel separate. Respects prefers-reduced-motion.
  */
 export function Hero({
-  videoMp4 = "/media/hero.mp4",
-  videoWebm = "/media/hero.webm",
-  poster = "/media/hero-poster.jpg",
+  videoMp4 = "/media/hero-sunset.mp4",
+  poster = "/media/hero-sunset-poster.jpg",
   className,
 }: HeroProps) {
   const ref = useRef<HTMLElement>(null)
@@ -72,7 +71,7 @@ export function Hero({
         className="absolute inset-0 -z-10 will-change-transform"
       >
         <video
-          className="h-full w-full object-cover opacity-[0.78]"
+          className="h-full w-full object-cover object-[50%_40%] opacity-[0.95]"
           poster={poster}
           autoPlay
           muted
@@ -81,7 +80,6 @@ export function Hero({
           preload="metadata"
           aria-hidden="true"
         >
-          <source src={videoWebm} type="video/webm" />
           <source src={videoMp4} type="video/mp4" />
         </video>
         {/* Fallback gradient if video fails — surfaces on error */}
@@ -90,15 +88,15 @@ export function Hero({
 
       {/* Scrim layers — heavier vertical fade + a left-side wash so the headline
           area is consistently calm regardless of what the video is doing. */}
-      <div className="pointer-events-none absolute inset-0 -z-[5] bg-gradient-to-b from-ink/85 via-ink/55 to-ink/95" />
-      <div className="pointer-events-none absolute inset-0 -z-[5] bg-gradient-to-r from-ink/70 via-ink/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-[5] bg-gradient-to-b from-ink/60 via-ink/20 to-ink/90" />
+      <div className="pointer-events-none absolute inset-0 -z-[5] bg-gradient-to-r from-ink/75 via-ink/25 to-transparent" />
       {/* Subtle vignette to pull the eye toward center text */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-[5]"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 35%, rgba(10,10,11,0.55) 100%)",
+            "radial-gradient(ellipse at center, transparent 40%, rgba(10,10,11,0.4) 100%)",
         }}
       />
       <div
