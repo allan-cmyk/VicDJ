@@ -22,4 +22,7 @@ export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-mono",
+  weight: "400",
+  // Small labels only. Not worth competing with the headline fonts for bandwidth.
+  preload: false,
 })
