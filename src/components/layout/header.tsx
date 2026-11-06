@@ -39,7 +39,7 @@ export function Header() {
           <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
@@ -51,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <Link
             href={siteConfig.socials.instagram.url}
             target="_blank"
@@ -62,7 +62,7 @@ export function Header() {
             <InstagramIcon size={15} />
           </Link>
           <Button asChild variant="primary" size="sm">
-            <Link href="#booking">Book DJ Trey</Link>
+            <Link href="/#booking">Book DJ Trey</Link>
           </Button>
         </div>
 
@@ -71,7 +71,7 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center text-ivory border border-ivory/15 rounded-full"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center text-ivory border border-ivory/15 rounded-full"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -80,10 +80,11 @@ export function Header() {
       {/* mobile drawer */}
       <div
         className={cn(
-          "md:hidden fixed inset-0 top-[69px] z-40 bg-ink transition-opacity duration-300",
+          "lg:hidden fixed inset-0 top-[69px] z-40 bg-ink transition-opacity duration-300",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         aria-hidden={!open}
+        inert={!open}
       >
         <div className="flex flex-col h-full px-6 py-12 gap-8">
           <nav className="flex flex-col gap-6">
@@ -116,7 +117,7 @@ export function Header() {
               <span className="font-mono text-sm tracking-wide">{siteConfig.socials.instagram.handle}</span>
             </Link>
             <Button asChild variant="primary" size="md" className="mt-4">
-              <Link href="#booking" onClick={() => setOpen(false)}>Book DJ Trey</Link>
+              <Link href="/#booking" onClick={() => setOpen(false)}>Book DJ Trey</Link>
             </Button>
           </div>
         </div>
