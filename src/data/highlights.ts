@@ -93,16 +93,6 @@ export const highlights: readonly Highlight[] = [
     },
   },
   {
-    category: "weddings",
-    title: "Grand staircase vows",
-    detail: "Austin Central Library",
-    media: {
-      type: "image",
-      src: "/media/gallery/wedding-peacock-full.jpg",
-      alt: "Wedding couple with peacock feather bouquet on the grand staircase of the Austin Central Library",
-    },
-  },
-  {
     category: "cruise",
     title: "Golden hour barge",
     detail: "Party Barge · Lake Travis",

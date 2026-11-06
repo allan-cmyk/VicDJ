@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next"
+import { posts } from "@/data/blog"
 import { galleryImages } from "@/data/gallery"
 import { siteConfig } from "@/lib/site-config"
 
@@ -10,5 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       images: galleryImages.map((image) => `${siteConfig.url}${image.src}`),
     },
+    { url: `${siteConfig.url}/blog`, lastModified: new Date() },
+    ...posts.map((post) => ({
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      lastModified: new Date(post.published),
+      images: [`${siteConfig.url}${post.cover.src}`],
+    })),
   ]
 }

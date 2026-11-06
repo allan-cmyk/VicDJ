@@ -37,11 +37,17 @@ Usually **Vic**, the business owner. He is not a developer.
 | Booking form options | `src/types/booking.ts` |
 | Media files | `public/media/`, `public/media/gallery/` |
 | Search engine details (business info, service area) | `src/lib/site-config.ts`, `src/lib/structured-data.ts` |
-| Pages listed for search engines | `src/app/sitemap.ts` |
+| Pages listed for search engines | `src/app/sitemap.ts` (blog posts are added automatically) |
+| Blog posts (one file each, listed in `index.ts`) | `src/data/blog/` |
 
 Media notes:
 - Browsers cache `public/media/` files for 30 days. To replace a file, use a new file name and update the reference, or returning visitors keep seeing the old one.
 - Every gallery or highlight video needs a `poster` image. It shows until the video plays, and it stays for visitors on slow connections or with reduced motion.
+
+Blog notes:
+- Write in the brand voice ("we"), not as Vic in the first person, unless the words are his own.
+- Use only facts from this repo, Vic, or a cited source. Don't invent events, stories, numbers, or prices. Check a photo before you describe it: some old labels were wrong.
+- Put a link for any outside figure or rule in the post's `sources` list.
 
 The email in `site-config.ts` is display only. Where booking inquiries are delivered is set by the `BOOKING_TO_EMAIL` environment variable on Vercel, which only Allan changes.
 

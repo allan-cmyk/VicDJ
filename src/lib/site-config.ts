@@ -36,11 +36,12 @@ export const siteConfig = {
     },
   },
   nav: [
-    { label: "Services", href: "#services" },
-    { label: "Clients", href: "#clients" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "About", href: "#about" },
-    { label: "Book", href: "#booking" },
+    { label: "Services", href: "/#services" },
+    { label: "Clients", href: "/#clients" },
+    { label: "Gallery", href: "/#gallery" },
+    { label: "About", href: "/#about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Book", href: "/#booking" },
   ],
   stats: [
     { value: "2008", label: "Since" },
