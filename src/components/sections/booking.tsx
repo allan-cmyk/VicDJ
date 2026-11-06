@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/section"
 import { EyebrowLabel } from "@/components/ui/eyebrow-label"
 import { Reveal } from "@/components/motion/reveal"
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal"
-import { BookingForm } from "@/components/forms/booking-form"
+import { LazyBookingForm } from "@/components/forms/lazy-booking-form"
 import { siteConfig } from "@/lib/site-config"
 import { Phone, Mail, MapPin } from "lucide-react"
 
@@ -23,7 +23,7 @@ export function Booking() {
             availability, packages, and a quote. For anything urgent, call or DM.
           </p>
 
-          <dl className="mt-10 space-y-5">
+          <ul className="mt-10 space-y-5">
             <ContactRow icon={<Phone size={14} />} label="Call" value={siteConfig.contact.phone} href={siteConfig.contact.phoneHref} />
             <ContactRow icon={<Mail size={14} />} label="Email" value={siteConfig.contact.email} href={siteConfig.contact.emailHref} />
             <ContactRow
@@ -31,12 +31,12 @@ export function Booking() {
               label="Based"
               value={`${siteConfig.location.city}, ${siteConfig.location.region}`}
             />
-          </dl>
+          </ul>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="rounded-sm border border-ivory/8 bg-ivory/[0.015] p-6 md:p-10">
-            <BookingForm />
+            <LazyBookingForm />
           </div>
         </Reveal>
       </div>
@@ -61,14 +61,14 @@ function ContactRow({
         {icon}
       </span>
       <div>
-        <dt className="font-mono text-[10px] uppercase tracking-[0.26em] text-ivory/50">
+        <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-ivory/50">
           {label}
-        </dt>
-        <dd className="font-display text-lg text-ivory group-hover:text-champagne transition-colors">
+        </p>
+        <p className="font-display text-lg text-ivory group-hover:text-champagne transition-colors">
           {value}
-        </dd>
+        </p>
       </div>
     </div>
   )
-  return href ? <a href={href}>{body}</a> : body
+  return <li>{href ? <a href={href}>{body}</a> : body}</li>
 }

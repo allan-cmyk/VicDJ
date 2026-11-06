@@ -36,9 +36,15 @@ Usually **Vic**, the business owner. He is not a developer.
 | Booking intro and 24-hour promise | `src/components/sections/booking.tsx`, `src/components/forms/booking-form.tsx` |
 | Booking form options | `src/types/booking.ts` |
 | Media files | `public/media/`, `public/media/gallery/` |
+| Search engine details (business info, service area) | `src/lib/site-config.ts`, `src/lib/structured-data.ts` |
+| Pages listed for search engines | `src/app/sitemap.ts` |
+
+Media notes:
+- Browsers cache `public/media/` files for 30 days. To replace a file, use a new file name and update the reference, or returning visitors keep seeing the old one.
+- Every gallery or highlight video needs a `poster` image. It shows until the video plays, and it stays for visitors on slow connections or with reduced motion.
 
 The email in `site-config.ts` is display only. Where booking inquiries are delivered is set by the `BOOKING_TO_EMAIL` environment variable on Vercel, which only Allan changes.
 
 ## Stack
 
-Next.js 16 (App Router, React 19, TypeScript strict), Tailwind CSS v4, Framer Motion 12, Embla Carousel, react-hook-form + Zod 3, Resend + React Email, Vercel Analytics. Hosted on Vercel: merging to `main` deploys production, and other branches get preview deployments.
+Next.js 16 (App Router, React 19, TypeScript strict), Tailwind CSS v4, CSS animations (`src/app/globals.css`) with a small in-view helper (`src/components/motion/`), Embla Carousel, react-hook-form + Zod 3, Resend + React Email, Vercel Analytics. Hosted on Vercel: merging to `main` deploys production, and other branches get preview deployments.

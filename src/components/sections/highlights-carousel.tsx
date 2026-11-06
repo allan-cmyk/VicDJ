@@ -6,9 +6,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Section } from "@/components/ui/section"
-import { EyebrowLabel } from "@/components/ui/eyebrow-label"
-import { Reveal } from "@/components/motion/reveal"
-import { TextMaskReveal } from "@/components/motion/text-mask-reveal"
+import { AmbientVideo } from "@/components/ui/ambient-video"
 import {
   highlights,
   HIGHLIGHT_ACCENTS,
@@ -23,7 +21,7 @@ import { cn } from "@/lib/utils"
  * Autoplay pauses on hover and stops entirely under reduced motion; the
  * carousel stays fully draggable/clickable either way.
  */
-export function HighlightsCarousel() {
+export function HighlightsCarousel({ heading }: { heading: React.ReactNode }) {
   const reduced = useReducedMotion()
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
     Autoplay({ delay: 3800, stopOnInteraction: false, stopOnMouseEnter: true }),
@@ -60,15 +58,7 @@ export function HighlightsCarousel() {
   return (
     <Section id="highlights" tone="ink-soft" container={false} className="py-28 lg:py-36">
       <div className="mx-auto mb-12 flex w-full max-w-[1320px] flex-wrap items-end justify-between gap-6 px-6 md:px-10 lg:px-14">
-        <Reveal>
-          <EyebrowLabel className="mb-4">Highlight reel</EyebrowLabel>
-          <TextMaskReveal
-            as="h2"
-            className="max-w-2xl font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.02] tracking-[-0.015em] text-ivory"
-          >
-            Big rooms. Small hours. <em className="font-light italic text-champagne">Full floors.</em>
-          </TextMaskReveal>
-        </Reveal>
+        {heading}
         <div className="flex items-center gap-6">
           <p className="hidden font-mono text-[11px] uppercase tracking-[0.22em] text-ivory/50 sm:block">
             Drag · or let it ride
@@ -107,6 +97,8 @@ export function HighlightsCarousel() {
   )
 }
 
+const CARD_SIZES = "(min-width: 1024px) 36vw, (min-width: 640px) 56vw, 82vw"
+
 function CarouselArrow({
   direction,
   onClick,
@@ -137,21 +129,27 @@ function HighlightCard({ highlight, index }: { highlight: Highlight; index: numb
             src={highlight.media.src}
             alt={highlight.media.alt}
             fill
-            sizes="(min-width: 1024px) 36vw, (min-width: 640px) 56vw, 82vw"
+            sizes={CARD_SIZES}
+            quality={60}
             className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
           />
         ) : (
-          <video
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
-            src={highlight.media.src}
-            poster={highlight.media.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={highlight.media.alt}
-          />
+          <>
+            {highlight.media.poster ? (
+              <Image
+                src={highlight.media.poster}
+                alt={highlight.media.alt}
+                fill
+                sizes={CARD_SIZES}
+                quality={60}
+                className="object-cover"
+              />
+            ) : null}
+            <AmbientVideo
+              src={highlight.media.src}
+              className="absolute inset-0 h-full w-full object-cover transition-[transform,opacity] duration-[1200ms] ease-out group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
+            />
+          </>
         )}
 
         {/* scrims */}

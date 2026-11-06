@@ -60,6 +60,7 @@ export const gallery: readonly GalleryTile[] = [
   {
     type: "video",
     src: "/media/gallery/tile-highland-nightclub.mp4",
+    poster: "/media/gallery/tile-highland-nightclub-poster.jpg",
     alt: "DJ Trey on the mic at Highland Lounge, 3:30am",
     caption: "Highland Lounge · 3:30am",
     category: "nightlife",
@@ -96,6 +97,7 @@ export const gallery: readonly GalleryTile[] = [
   {
     type: "video",
     src: "/media/gallery/tile-domain-poolside.mp4",
+    poster: "/media/gallery/tile-domain-poolside-poster.jpg",
     alt: "Poolside DJ set at Villages at the Domain",
     caption: "Villages · Domain · Poolside",
     category: "nightlife",
@@ -150,6 +152,7 @@ export const gallery: readonly GalleryTile[] = [
   {
     type: "video",
     src: "/media/gallery/tile-friday.mp4",
+    poster: "/media/gallery/tile-friday-poster.jpg",
     alt: "Friday night at AV Productionz",
     caption: "Friday Night · AVProz",
     category: "nightlife",

@@ -57,6 +57,7 @@ export const highlights: readonly Highlight[] = [
     media: {
       type: "video",
       src: "/media/gallery/tile-highland-nightclub.mp4",
+      poster: "/media/gallery/tile-highland-nightclub-poster.jpg",
       alt: "DJ Trey on the mic at Highland Lounge, 3:30am",
     },
   },
@@ -87,6 +88,7 @@ export const highlights: readonly Highlight[] = [
     media: {
       type: "video",
       src: "/media/gallery/tile-domain-poolside.mp4",
+      poster: "/media/gallery/tile-domain-poolside-poster.jpg",
       alt: "Poolside DJ set at Villages at the Domain",
     },
   },

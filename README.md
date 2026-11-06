@@ -6,7 +6,7 @@ Cinematic marketing site for **AV Productionz / DJ Trey** (Victor Gutierrez), Au
 
 - Next.js 16 (App Router, TypeScript strict)
 - Tailwind CSS v4 (CSS-variable theme in `globals.css`)
-- Framer Motion 12
+- CSS animations + a small in-view helper (`src/components/motion/`)
 - react-hook-form + Zod
 - Resend + @react-email (booking inquiries)
 - Vercel Analytics

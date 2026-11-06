@@ -10,10 +10,18 @@ export const siteConfig = {
   location: {
     city: "Austin",
     region: "TX",
+    country: "US",
+  },
+  // Used in search-engine structured data only. Keep to places Vic really works.
+  areaServed: ["Austin, TX", "Round Rock, TX", "San Marcos, TX", "Lake Travis, TX"],
+  founder: {
+    name: "Victor Gutierrez",
+    stageName: "DJ Trey",
   },
   contact: {
     phone: "361-945-2522",
     phoneHref: "tel:+13619452522",
+    phoneE164: "+13619452522",
     email: "vic@djtr3y.com",
     emailHref: "mailto:vic@djtr3y.com",
   },

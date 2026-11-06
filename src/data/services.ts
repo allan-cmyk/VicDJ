@@ -5,6 +5,8 @@ export type Service = {
   id: "weddings" | "corporate" | "nightlife"
   number: string
   eyebrow: string
+  /** Plain service name for search engines (structured data), not shown on the page. */
+  seoName: string
   title: string
   blurb: string
   offerings: string[]
@@ -20,6 +22,7 @@ export const services: readonly Service[] = [
     id: "weddings",
     number: "01",
     eyebrow: "Weddings",
+    seoName: "Wedding DJ",
     title: "Your night, scored.",
     blurb:
       "From first look to last dance — ceremony, cocktail, reception, and all the small moments. Custom readings, live mixing, and lighting designed for the room you've chosen.",
@@ -39,6 +42,7 @@ export const services: readonly Service[] = [
     id: "corporate",
     number: "02",
     eyebrow: "Corporate & Private",
+    seoName: "Corporate and Private Event DJ",
     title: "Rooms that move.",
     blurb:
       "Galas, brand activations, launches, and conferences. Read the room, control the tempo, keep the energy honest. Trusted by Whataburger, Frost Bank, Endeavor Real Estate, and 30+ more.",
@@ -58,6 +62,7 @@ export const services: readonly Service[] = [
     id: "nightlife",
     number: "03",
     eyebrow: "Nightlife & Cruise",
+    seoName: "Nightlife and Cruise DJ",
     title: "Open format, end to end.",
     blurb:
       "Rooftop residencies, venue takeovers, yacht and cruise bookings. Resident DJ at Premier Party Cruises and a decade of sets across Austin's best rooms.",

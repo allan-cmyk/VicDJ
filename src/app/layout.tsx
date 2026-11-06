@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { fraunces, inter, jetbrainsMono } from "@/lib/fonts"
 import { siteConfig } from "@/lib/site-config"
+import { structuredData } from "@/lib/structured-data"
 import { cn } from "@/lib/utils"
 import "./globals.css"
 
@@ -24,6 +25,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "AV Productionz" }],
   creator: "AV Productionz",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
@@ -46,9 +50,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/og.jpg"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
   robots: {
     index: true,
     follow: true,
@@ -64,7 +65,20 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={cn(fraunces.variable, inter.variable, jetbrainsMono.variable)}>
+      <head>
+        {/* Reveal animations start hidden and need JavaScript to finish. */}
+        <noscript>
+          <style>{"[data-reveal],.mask-word span{opacity:1;transform:none}"}</style>
+        </noscript>
+      </head>
       <body className="bg-ink text-ivory antialiased font-body">
+        {/* Static data from this repo only. "<" is escaped as the Next.js JSON-LD guide requires. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
         <Analytics />
       </body>

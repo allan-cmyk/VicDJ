@@ -1,8 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { useReducedMotion } from "@/hooks/use-reduced-motion"
+import { useEffect, useRef } from "react"
 
 interface CountUpProps {
   /** The final rendered value, e.g. "250+" or "2008" or "38". */
@@ -13,57 +11,52 @@ interface CountUpProps {
 }
 
 /**
- * Counts up from 0 to the numeric portion of `value` when scrolled into view.
- * Preserves any non-numeric suffix (+, K, etc.) and leading zero-pad (e.g. "2008").
- * Uses an intersection-observer + a spring so it feels mechanical, not linear.
+ * Counts up to `value` when scrolled into view. The real value is what renders on
+ * the server, so crawlers and no-JS visitors read "250+", never a placeholder zero.
+ * The zeroed start is applied in the browser only, on an element still off screen.
  */
 export function CountUp({ value, duration = 1600, className }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.6 })
-  const reduced = useReducedMotion()
-
-  // Split the value into numeric + trailing suffix (e.g. "250+" → {num:250, suffix:"+"})
-  const match = value.match(/^(\d+)(.*)$/)
-  const target = match ? parseInt(match[1], 10) : 0
-  const suffix = match ? match[2] : ""
-  const pad = match ? match[1].length : 0
-
-  const mv = useMotionValue(0)
-  const spring = useSpring(mv, {
-    damping: 30,
-    stiffness: 90,
-    mass: 1,
-  })
-  const rounded = useTransform(spring, (latest) =>
-    Math.round(latest).toString().padStart(pad, "0")
-  )
-
-  const [displayed, setDisplayed] = useState(pad > 0 ? "0".padStart(pad, "0") : "0")
 
   useEffect(() => {
-    // Reduced motion renders the final value directly (see below) — no animation.
-    if (!inView || reduced) return
-    mv.set(target)
-    const unsub = rounded.on("change", (v) => setDisplayed(v))
-    // Safety fallback: ensure final value after duration even if spring over/undershoots.
-    const t = window.setTimeout(() => {
-      setDisplayed(match ? match[1] : value)
-    }, duration + 400)
-    return () => {
-      unsub()
-      window.clearTimeout(t)
-    }
-  }, [inView, reduced, target, duration, mv, rounded, match, value, pad])
+    const el = ref.current
+    const match = value.match(/^(\d+)(.*)$/)
+    if (!el || !match) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-  if (!match) {
-    // Not numeric — render as-is.
-    return <span ref={ref} className={className}>{value}</span>
-  }
+    const [, digits, suffix] = match
+    const target = parseInt(digits, 10)
+    const format = (n: number) => `${Math.round(n).toString().padStart(digits.length, "0")}${suffix}`
+
+    el.textContent = format(0)
+
+    let frame = 0
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.disconnect()
+        const startedAt = performance.now()
+        const tick = (now: number) => {
+          const progress = Math.min((now - startedAt) / duration, 1)
+          el.textContent = format(target * (1 - (1 - progress) ** 4))
+          if (progress < 1) frame = requestAnimationFrame(tick)
+        }
+        frame = requestAnimationFrame(tick)
+      },
+      { threshold: 0.6 }
+    )
+    observer.observe(el)
+
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      el.textContent = value
+    }
+  }, [value, duration])
 
   return (
-    <motion.span ref={ref} className={className}>
-      {reduced ? match[1] : displayed}
-      {suffix}
-    </motion.span>
+    <span ref={ref} className={className}>
+      {value}
+    </span>
   )
 }
