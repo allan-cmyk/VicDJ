@@ -31,6 +31,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Vic's contact card (/vic). text/vcard makes an iPhone open its New Contact sheet.
+        // Keep this rule last: a later rule setting the same header would win.
+        source: "/victor-gutierrez.vcf",
+        headers: [
+          { key: "Content-Type", value: "text/vcard; charset=utf-8" },
+          { key: "X-Robots-Tag", value: "noindex" },
+        ],
+      },
     ]
   },
 }

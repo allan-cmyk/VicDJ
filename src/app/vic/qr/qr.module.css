@@ -1,0 +1,28 @@
+/* /card/qr — the code as big as the screen allows, centred on the dark page, with nothing on top of it.
+   On a phone it runs edge to edge; its own white 4-module quiet zone is the margin. */
+
+.page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px 0;
+  text-align: center;
+  font-family: inherit;
+}
+
+.code { width: min(100%, 70vh, 640px); background: #fff; }
+@supports (height: 1svh) {
+  .code { width: min(100%, 70svh, 640px); }
+}
+.code img { display: block; width: 100%; height: auto; }
+
+.cta { margin: 8px 0 0; padding: 0 20px; font-size: 28px; line-height: 34px; font-weight: 600; }
+
+.name { margin: 0; padding: 0 20px; font-size: 17px; line-height: 27px; font-weight: 600; color: var(--card-muted); }
+.name span { font-weight: 400; }

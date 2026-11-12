@@ -41,3 +41,6 @@ next-env.d.ts
 
 # raw IG archive (kept locally, not deployed)
 .ig-raw/
+
+# digital business card: QR images for print (not deployed)
+/qr-output
