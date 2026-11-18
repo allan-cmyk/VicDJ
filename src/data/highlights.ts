@@ -94,12 +94,12 @@ export const highlights: readonly Highlight[] = [
   },
   {
     category: "cruise",
-    title: "Golden hour barge",
-    detail: "Party Barge · Lake Travis",
+    title: "Skyline on the water",
+    detail: "Lady Bird Lake · Downtown Austin",
     media: {
       type: "image",
-      src: "/media/gallery/cruise-partybarge.jpg",
-      alt: "Crowd on the party barge at golden hour, Lake Travis",
+      src: "/media/gallery/cruise-downtown-skyline.jpg",
+      alt: "DJ Trey in a red blazer at the decks on a boat in front of the downtown Austin skyline",
     },
   },
 ] as const

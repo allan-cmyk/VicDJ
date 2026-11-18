@@ -54,16 +54,16 @@ export const lakeTravisPartyBoat: Post = {
     },
     {
       type: "image",
-      src: "/media/gallery/cruise-discoball.jpg",
-      alt: "Crowd dancing under a disco ball on a party barge on Lake Travis",
-      width: 1440,
-      height: 959,
-      caption: "Party barge · Lake Travis",
+      src: "/media/gallery/cruise-atx-disco-cruise.jpg",
+      alt: "DJ Trey at an ATX Disco Cruise DJ booth on a party boat",
+      width: 1082,
+      height: 1440,
+      caption: "ATX Disco Cruise",
     },
     { type: "h2", text: "How to plan a four-hour cruise" },
     {
       type: "p",
-      text: "As an example, the Nautical Nonsense boat party that AV Productionz listed at Anderson Mill Marina for June 30, 2024 was set for 3:30 to 7:30 p.m. For a cruise of that length, this is a simple way to plan the music:",
+      text: "Many party cruises run about four hours, such as a 3:30 to 7:30 p.m. afternoon sail. For a cruise of that length, this is a simple way to plan the music:",
     },
     {
       type: "ul",
