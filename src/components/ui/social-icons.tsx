@@ -48,3 +48,23 @@ export function FacebookIcon({ size = 16, className, strokeWidth = 1.5 }: IconPr
     </svg>
   )
 }
+
+export function TikTokIcon({ size = 16, className, strokeWidth = 1.5 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" />
+      <path d="M14 3c.4 2.6 2.2 4.5 5 4.8" />
+    </svg>
+  )
+}

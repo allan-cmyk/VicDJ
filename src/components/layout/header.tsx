@@ -6,7 +6,7 @@ import { Menu, X, Phone } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { InstagramIcon } from "@/components/ui/social-icons"
+import { InstagramIcon, TikTokIcon } from "@/components/ui/social-icons"
 import { Logo } from "./logo"
 
 export function Header() {
@@ -60,6 +60,15 @@ export function Header() {
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:text-champagne hover:border-champagne transition-colors"
           >
             <InstagramIcon size={15} />
+          </Link>
+          <Link
+            href={siteConfig.socials.tiktok.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok @thedjtr3y"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:text-champagne hover:border-champagne transition-colors"
+          >
+            <TikTokIcon size={15} />
           </Link>
           <Button asChild variant="primary" size="sm">
             <Link href="/#booking">Book DJ Trey</Link>
@@ -115,6 +124,15 @@ export function Header() {
             >
               <InstagramIcon size={14} />
               <span className="font-mono text-sm tracking-wide">{siteConfig.socials.instagram.handle}</span>
+            </Link>
+            <Link
+              href={siteConfig.socials.tiktok.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-ivory/70 hover:text-champagne"
+            >
+              <TikTokIcon size={14} />
+              <span className="font-mono text-sm tracking-wide">{siteConfig.socials.tiktok.handle}</span>
             </Link>
             <Button asChild variant="primary" size="md" className="mt-4">
               <Link href="/#booking" onClick={() => setOpen(false)}>Book DJ Trey</Link>

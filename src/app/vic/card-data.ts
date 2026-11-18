@@ -58,6 +58,8 @@ export const CARD_THEME_COLOR = "#0a0a0b";
  * field, so it isn't saved with the contact, and check-card reports this button as "unexpected" (expected).
  */
 export const CARD_INSTAGRAM = "https://www.instagram.com/djtr3y/";
+/** Page-only extra, like CARD_INSTAGRAM: a TikTok button. */
+export const CARD_TIKTOK = "https://www.tiktok.com/@thedjtr3y";
 
 const has = (v?: string) => typeof v === "string" && v.trim() !== "";
 export const cardName = `${card.givenName} ${card.familyName}${has(card.suffix) ? `, ${card.suffix}` : ""}`;

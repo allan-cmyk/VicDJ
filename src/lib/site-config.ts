@@ -35,6 +35,10 @@ export const siteConfig = {
       handle: "AVProz",
       url: "https://www.facebook.com/AVProz/",
     },
+    tiktok: {
+      handle: "@thedjtr3y",
+      url: "https://www.tiktok.com/@thedjtr3y",
+    },
   },
   nav: [
     { label: "Services", href: "/#services" },

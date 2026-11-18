@@ -41,7 +41,7 @@ export const structuredData = {
         addressCountry: location.country,
       },
       areaServed,
-      sameAs: [socials.instagram.url, socials.facebook.url],
+      sameAs: [socials.instagram.url, socials.facebook.url, socials.tiktok.url],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "DJ and event production services",
@@ -64,7 +64,7 @@ export const structuredData = {
       alternateName: founder.stageName,
       jobTitle: "DJ",
       worksFor: { "@id": businessId },
-      sameAs: [socials.instagram.url],
+      sameAs: [socials.instagram.url, socials.tiktok.url],
     },
   ],
 }
