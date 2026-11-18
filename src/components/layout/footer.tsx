@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
-import { InstagramIcon, FacebookIcon } from "@/components/ui/social-icons"
+import { InstagramIcon, FacebookIcon, TikTokIcon } from "@/components/ui/social-icons"
 import { Logo } from "./logo"
 
 export function Footer() {
@@ -24,6 +24,15 @@ export function Footer() {
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:text-champagne hover:border-champagne transition-colors"
               >
                 <InstagramIcon size={15} />
+              </Link>
+              <Link
+                href={siteConfig.socials.tiktok.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok @thedjtr3y"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:text-champagne hover:border-champagne transition-colors"
+              >
+                <TikTokIcon size={15} />
               </Link>
               <Link
                 href={siteConfig.socials.facebook.url}
