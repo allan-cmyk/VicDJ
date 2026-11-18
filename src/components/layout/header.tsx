@@ -36,7 +36,7 @@ export function Header() {
     >
       <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between px-6 md:px-10 lg:px-14 py-5">
         <Link href="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne rounded-full">
-          <Logo />
+          <Logo variant="djtr3y" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

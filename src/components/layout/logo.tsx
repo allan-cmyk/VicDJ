@@ -1,11 +1,25 @@
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface LogoProps {
   className?: string
-  variant?: "full" | "mark"
+  /** "djtr3y" is Vic's neon DJ TR3Y wordmark (header); "full" is the AV Productionz lockup (footer). */
+  variant?: "full" | "mark" | "djtr3y"
 }
 
 export function Logo({ className, variant = "full" }: LogoProps) {
+  if (variant === "djtr3y") {
+    return (
+      <Image
+        src="/media/logo-djtr3y.png"
+        alt="DJ TR3Y"
+        width={594}
+        height={120}
+        priority
+        className={cn("h-7 w-auto md:h-8", className)}
+      />
+    )
+  }
   if (variant === "mark") {
     return (
       <span
