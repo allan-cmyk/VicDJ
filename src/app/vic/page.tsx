@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { CARD_COVER_SITE_CHROME, CARD_INSTAGRAM, CARD_TIKTOK, CARD_PATH, CARD_SITE, CARD_THEME_COLOR, CARD_VCF, card, cardHas, cardName, cardTel } from "./card-data";
+import { CARD_COVER_SITE_CHROME, CARD_INSTAGRAM, CARD_TIKTOK, CARD_YOUTUBE, CARD_PATH, CARD_SITE, CARD_THEME_COLOR, CARD_VCF, card, cardHas, cardName, cardTel } from "./card-data";
 import { ShareButton } from "./ShareButton";
 import s from "./card.module.css";
 
@@ -53,6 +53,7 @@ const actions: Action[] = [
   // Page-only extra (see CARD_INSTAGRAM in card-data.ts).
   ...(cardHas(CARD_INSTAGRAM) ? [{ href: CARD_INSTAGRAM, label: "Instagram", arrow: true, out: true }] : []),
   ...(cardHas(CARD_TIKTOK) ? [{ href: CARD_TIKTOK, label: "TikTok", arrow: true, out: true }] : []),
+  ...(cardHas(CARD_YOUTUBE) ? [{ href: CARD_YOUTUBE, label: "YouTube", arrow: true, out: true }] : []),
 ];
 
 export default function ContactCard() {

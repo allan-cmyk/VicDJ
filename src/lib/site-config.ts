@@ -39,6 +39,10 @@ export const siteConfig = {
       handle: "@thedjtr3y",
       url: "https://www.tiktok.com/@thedjtr3y",
     },
+    youtube: {
+      handle: "@TheDJTr3y",
+      url: "https://www.youtube.com/@TheDJTr3y",
+    },
   },
   nav: [
     { label: "Services", href: "/#services" },
