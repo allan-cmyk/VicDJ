@@ -60,6 +60,8 @@ export const CARD_THEME_COLOR = "#0a0a0b";
 export const CARD_INSTAGRAM = "https://www.instagram.com/djtr3y/";
 /** Page-only extra, like CARD_INSTAGRAM: a TikTok button. */
 export const CARD_TIKTOK = "https://www.tiktok.com/@thedjtr3y";
+/** Page-only extra, like CARD_INSTAGRAM: a YouTube button. */
+export const CARD_YOUTUBE = "https://www.youtube.com/@TheDJTr3y";
 
 const has = (v?: string) => typeof v === "string" && v.trim() !== "";
 export const cardName = `${card.givenName} ${card.familyName}${has(card.suffix) ? `, ${card.suffix}` : ""}`;
