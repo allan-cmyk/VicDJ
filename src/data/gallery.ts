@@ -69,15 +69,6 @@ export const gallery: readonly GalleryTile[] = [
   },
   {
     type: "image",
-    src: "/media/gallery/nautical-nonsense-flyer.jpg",
-    alt: "Flyer for the Nautical Nonsense boat party at Anderson Mill Marina in Leander, Texas",
-    caption: "Nautical Nonsense · Boat Party",
-    category: "cruise",
-    width: 1440,
-    height: 1462,
-  },
-  {
-    type: "image",
     src: "/media/gallery/cruise-discoball.jpg",
     alt: "Dance floor with disco ball on the party barge, Lake Travis",
     caption: "Disco Ball · Lake Travis",
