@@ -2,10 +2,10 @@ export const siteConfig = {
   name: "AV Productionz",
   title: "AV Productionz — DJ Trey | Austin DJ for Weddings, Corporate & Nightlife",
   description:
-    "Austin's most requested DJ. Since 2008, AV Productionz has produced sound and staging for luxury weddings, corporate galas, and the city's top nightlife rooms.",
+    "Austin's most requested DJ. Since 2003, AV Productionz has produced sound and staging for luxury weddings, corporate galas, and the city's top nightlife rooms.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://djtr3y.com",
   tagline: "Austin's most requested DJ — for the nights people don't forget.",
-  since: 2008,
+  since: 2003,
   locale: "en-US",
   location: {
     city: "Austin",
@@ -44,7 +44,7 @@ export const siteConfig = {
     { label: "Book", href: "/#booking" },
   ],
   stats: [
-    { value: "2008", label: "Since" },
+    { value: "2003", label: "Since" },
     { value: "250+", label: "Events" },
     { value: "100+", label: "Weddings" },
     { value: "38", label: "Signature venues" },
