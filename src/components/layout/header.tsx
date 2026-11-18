@@ -84,15 +84,36 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center text-ivory border border-ivory/15 rounded-full"
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        {/* Phone / tablet: social icons beside the menu button */}
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+          {(
+            [
+              { key: "instagram", label: "Instagram", Icon: InstagramIcon },
+              { key: "tiktok", label: "TikTok", Icon: TikTokIcon },
+              { key: "youtube", label: "YouTube", Icon: YouTubeIcon },
+            ] as const
+          ).map(({ key, label, Icon }) => (
+            <Link
+              key={key}
+              href={siteConfig.socials[key].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${label} ${siteConfig.socials[key].handle}`}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ivory/15 text-ivory/70 hover:text-champagne hover:border-champagne transition-colors sm:h-9 sm:w-9"
+            >
+              <Icon size={14} />
+            </Link>
+          ))}
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="ml-1 inline-flex h-10 w-10 items-center justify-center text-ivory border border-ivory/15 rounded-full"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
       {/* mobile drawer */}

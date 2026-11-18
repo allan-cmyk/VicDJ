@@ -16,7 +16,7 @@ export function Logo({ className, variant = "full" }: LogoProps) {
         width={610}
         height={140}
         priority
-        className={cn("h-9 w-auto md:h-10", className)}
+        className={cn("h-8 w-auto sm:h-9 md:h-10", className)}
       />
     )
   }
