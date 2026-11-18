@@ -74,8 +74,8 @@ export const services: readonly Service[] = [
       "Touring support",
     ],
     icon: Disc3,
-    image: "/media/gallery/cruise-discoball.jpg",
-    imageAlt: "Crowd dancing under disco ball on Premier Party Cruises barge, Lake Travis",
+    image: "/media/gallery/cruise-atx-disco-cruise.jpg",
+    imageAlt: "DJ Trey at an ATX Disco Cruise DJ booth on a party boat",
     accentVar: "#E26D9C", // hot pink — nightlife heat
   },
 ] as const
