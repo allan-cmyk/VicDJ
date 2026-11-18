@@ -6,12 +6,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-medium tracking-wide transition-[transform,background-color,color,box-shadow] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center font-medium tracking-wide transition-[transform,background-color,color,box-shadow,filter] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         primary:
-          "bg-champagne text-ink hover:bg-[color:var(--champagne-strong)] hover:-translate-y-0.5 shadow-[0_12px_30px_-12px_rgba(231,201,139,0.45)]",
+          // Sunset gradient: gold → amber → orange, matching the hero video's horizon.
+          "bg-[linear-gradient(100deg,#f7cf6e_0%,#f2a74b_55%,#e8843a_100%)] text-[#1a1206] hover:brightness-110 hover:-translate-y-0.5 shadow-[0_12px_30px_-12px_rgba(232,132,58,0.55)]",
         ghost:
           "border border-ivory/25 text-ivory hover:border-champagne hover:text-champagne hover:-translate-y-0.5 backdrop-blur-[2px]",
         subtle:
