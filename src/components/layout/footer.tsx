@@ -11,7 +11,7 @@ export function Footer() {
       <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-14 pt-20 pb-10">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
           <div className="space-y-6">
-            <Logo />
+            <Logo variant="djtr3y" className="-ml-2 h-11 md:h-12" />
             <p className="text-ivory/60 max-w-sm leading-relaxed">
               Austin-based DJ &amp; entertainment production. Weddings, corporate, nightlife and cruise — since {siteConfig.since}.
             </p>
