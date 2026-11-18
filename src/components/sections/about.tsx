@@ -49,7 +49,7 @@ export function About() {
           <Reveal delay={0.1}>
             <div className="space-y-5 text-ivory/70 leading-relaxed max-w-xl">
               <p>
-                AV Productionz started in 2003 as a college side hustle in Austin, TX and grew into
+                AV Productionz started in 2008 as a college side hustle in Austin, TX and grew into
                 a full entertainment production company. Today Victor runs sound, lighting, and
                 staging for everything from Driskill ballrooms to rooftop takeovers.
               </p>

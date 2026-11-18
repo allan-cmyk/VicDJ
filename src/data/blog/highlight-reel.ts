@@ -16,7 +16,7 @@ export const highlightReel: Post = {
   body: [
     {
       type: "p",
-      text: "AV Productionz started in 2003 as a college side hustle in Austin and grew into a full entertainment production company. Here are some of the rooms from its gallery, and what each kind of event asks of a DJ.",
+      text: "AV Productionz started in 2008 as a college side hustle in Austin and grew into a full entertainment production company. Here are some of the rooms from its gallery, and what each kind of event asks of a DJ.",
     },
     { type: "h2", text: "Frost Fest at Frost Bank Tower" },
     {
