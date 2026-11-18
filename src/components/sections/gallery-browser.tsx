@@ -105,7 +105,7 @@ export function GalleryBrowser() {
             onClick={() => setFilter("all")}
             className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-6 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ivory/80 transition-colors hover:border-champagne hover:text-champagne"
           >
-            See all {gallery.length} photos &amp; reels
+            {`See all ${gallery.length} photos & reels`}
             <ChevronRight size={14} strokeWidth={1.6} aria-hidden />
           </button>
         </div>
