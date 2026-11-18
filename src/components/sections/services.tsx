@@ -18,7 +18,7 @@ export function Services() {
             as="h2"
             className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[1] tracking-[-0.02em] text-ivory"
           >
-            One DJ. <em className="italic font-light text-champagne">Three rooms he owns.</em>
+            One DJ. <em className="italic font-light text-champagne">Open format, every room.</em>
           </TextMaskReveal>
         </Reveal>
         <Reveal delay={0.15}>
