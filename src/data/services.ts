@@ -34,8 +34,8 @@ export const services: readonly Service[] = [
       "Sound for toasts & speeches",
     ],
     icon: Diamond,
-    image: "/media/gallery/flores-wedding-san-luis.jpg",
-    imageAlt: "Luxury ballroom wedding with blue ceiling lighting — Flores Wedding, San Luis Resort",
+    image: "/media/gallery/wedding-head-table-sunset.jpg",
+    imageAlt: "DJ Trey with the bride and groom at the head table in front of a sunset window",
     accentVar: "var(--champagne)",
   },
   {
@@ -54,8 +54,8 @@ export const services: readonly Service[] = [
       "Integrated AV production",
     ],
     icon: Building2,
-    image: "/media/gallery/private-party-lighting.jpg",
-    imageAlt: "Full truss lighting rig and DJ stage at a private corporate party in Austin",
+    image: "/media/gallery/corporate-booth-screen.jpg",
+    imageAlt: "DJ Trey booth with a glowing logo screen, speakers and controller set up in a venue",
     accentVar: "#7AB8C4", // cool teal — corporate confident
   },
   {
