@@ -97,7 +97,7 @@ export function Hero({
               Austin · Since {siteConfig.since}
             </EyebrowLabel>
             <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory">
-              Austin&rsquo;s open-format <em className="italic font-light text-champagne">DJ</em>,
+              Austin&rsquo;s <span className="whitespace-nowrap">open-format</span> <em className="italic font-light text-champagne">DJ</em>,
               <br />
               23 years in the making,
               <br />
