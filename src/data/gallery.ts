@@ -8,13 +8,40 @@ import type { HighlightCategory } from "@/data/highlights"
 
 export type GalleryCategory = HighlightCategory
 
-export const GALLERY_FILTERS: readonly { value: GalleryCategory | "all"; label: string }[] = [
-  { value: "all", label: "All" },
+export type GalleryFilter = GalleryCategory | "featured" | "all"
+
+export const GALLERY_FILTERS: readonly { value: GalleryFilter; label: string }[] = [
+  { value: "featured", label: "Featured" },
   { value: "weddings", label: "Weddings" },
   { value: "corporate", label: "Corporate" },
   { value: "nightlife", label: "Nightlife" },
   { value: "cruise", label: "Cruise" },
+  { value: "all", label: "All" },
 ] as const
+
+/**
+ * The 15 tiles shown by default ("Featured"), in display order. Picked by Vic's
+ * brief: highest-quality shots and reels first, every kind of event covered,
+ * the club reel and a truss setup included. Everything else stays reachable
+ * through the category filters and "All".
+ */
+export const FEATURED_GALLERY_SRCS: readonly string[] = [
+  "/media/gallery/tile-club-set.mp4",
+  "/media/gallery/wedding-first-dance-monogram.jpg",
+  "/media/gallery/corporate-truss-uplighting.jpg",
+  "/media/gallery/tile-reception-packed-floor.mp4",
+  "/media/gallery/cruise-downtown-skyline.jpg",
+  "/media/gallery/nightlife-stage-gold.jpg",
+  "/media/gallery/wedding-head-table-sunset.jpg",
+  "/media/gallery/tile-ballroom-booth-view.mp4",
+  "/media/gallery/cruise-atx-disco-cruise.jpg",
+  "/media/gallery/nightlife-new-years-booth.jpg",
+  "/media/gallery/tile-reception-couple-dance.mp4",
+  "/media/gallery/frost-bank-tower.jpg",
+  "/media/gallery/wedding-cold-sparks.jpg",
+  "/media/gallery/tile-rooftop-night-set.mp4",
+  "/media/gallery/cruise-decks-crowd.jpg",
+]
 
 export type GalleryTile =
   | {
@@ -491,6 +518,12 @@ export const gallery: readonly GalleryTile[] = [
 ] as const
 
 /** Every unique image tile — reused by the decorative filmstrip rows. */
+export const featuredGallery: readonly GalleryTile[] = FEATURED_GALLERY_SRCS.map((src) => {
+  const tile = gallery.find((t) => t.src === src)
+  if (!tile) throw new Error(`Featured gallery tile not found: ${src}`)
+  return tile
+})
+
 export const galleryImages = gallery.filter(
   (t): t is Extract<GalleryTile, { type: "image" }> => t.type === "image"
 )

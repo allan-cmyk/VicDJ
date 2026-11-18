@@ -6,15 +6,16 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react"
 import { Reveal } from "@/components/motion/reveal"
 import { AmbientVideo } from "@/components/ui/ambient-video"
 import {
+  featuredGallery,
   gallery,
   GALLERY_FILTERS,
-  type GalleryCategory,
+  type GalleryFilter,
   type GalleryTile,
 } from "@/data/gallery"
 import { HIGHLIGHT_LABELS } from "@/data/highlights"
 import { cn } from "@/lib/utils"
 
-type Filter = GalleryCategory | "all"
+type Filter = GalleryFilter
 
 const TILE_SIZES = "(min-width: 1320px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 
@@ -32,14 +33,15 @@ const TILE_MEDIA_CLASSES = cn(
  * lightbox. Uses CSS `column-count` masonry (no JS layout math).
  */
 export function GalleryBrowser() {
-  const [filter, setFilter] = useState<Filter>("all")
+  const [filter, setFilter] = useState<Filter>("featured")
   const [lightbox, setLightbox] = useState<number | null>(null)
   const lastTrigger = useRef<HTMLElement | null>(null)
 
-  const tiles = filter === "all" ? gallery : gallery.filter((t) => t.category === filter)
+  const tilesFor = (value: Filter): readonly GalleryTile[] =>
+    value === "featured" ? featuredGallery : value === "all" ? gallery : gallery.filter((t) => t.category === value)
+  const tiles = tilesFor(filter)
 
-  const countFor = (value: Filter) =>
-    value === "all" ? gallery.length : gallery.filter((t) => t.category === value).length
+  const countFor = (value: Filter) => tilesFor(value).length
 
   const openLightbox = useCallback((index: number) => {
     lastTrigger.current = document.activeElement as HTMLElement | null
@@ -95,6 +97,19 @@ export function GalleryBrowser() {
           <GalleryTileView key={tile.src} tile={tile} index={i} onOpen={() => openLightbox(i)} />
         ))}
       </div>
+
+      {filter === "featured" ? (
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setFilter("all")}
+            className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-6 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ivory/80 transition-colors hover:border-champagne hover:text-champagne"
+          >
+            {`See all ${gallery.length} photos & reels`}
+            <ChevronRight size={14} strokeWidth={1.6} aria-hidden />
+          </button>
+        </div>
+      ) : null}
 
       {lightbox !== null && tiles[lightbox] ? (
         <Lightbox tiles={tiles} index={lightbox} onClose={closeLightbox} onNav={navLightbox} />
