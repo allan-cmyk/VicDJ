@@ -29,7 +29,7 @@ export function About() {
                 <p className="font-display text-2xl text-ivory">Victor &ldquo;DJ Trey&rdquo; Gutierrez</p>
               </div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ivory/60">
-                Est. {siteConfig.since}
+                Est. {siteConfig.founded}
               </p>
             </div>
           </div>

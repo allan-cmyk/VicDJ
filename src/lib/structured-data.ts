@@ -1,7 +1,7 @@
 import { services } from "@/data/services"
 import { siteConfig } from "@/lib/site-config"
 
-const { url, name, description, contact, location, areaServed, founder, socials, since } = siteConfig
+const { url, name, description, contact, location, areaServed, founder, socials, founded } = siteConfig
 
 const businessId = `${url}/#business`
 const founderId = `${url}/#founder`
@@ -32,7 +32,7 @@ export const structuredData = {
       image: `${url}/og.jpg`,
       telephone: contact.phoneE164,
       email: contact.email,
-      foundingDate: String(since),
+      foundingDate: String(founded),
       founder: { "@id": founderId },
       address: {
         "@type": "PostalAddress",
