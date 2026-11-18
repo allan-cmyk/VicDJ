@@ -86,7 +86,7 @@ function ServiceCard({
             alt={service.imageAlt}
             fill
             sizes="(min-width: 1320px) 640px, (min-width: 1024px) 50vw, 100vw"
-            quality={60}
+            quality={75}
             className="object-cover"
           />
           {/* Color wash that reinforces the pillar identity */}

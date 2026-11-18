@@ -34,7 +34,7 @@ export const services: readonly Service[] = [
       "Sound for toasts & speeches",
     ],
     icon: Diamond,
-    image: "/media/gallery/wedding-head-table-sunset.jpg",
+    image: "/media/services-weddings-sunset.jpg",
     imageAlt: "DJ Trey with the bride and groom at the head table in front of a sunset window",
     accentVar: "var(--champagne)",
   },
