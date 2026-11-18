@@ -65,7 +65,7 @@ export const services: readonly Service[] = [
     seoName: "Nightlife and Cruise DJ",
     title: "Open format, end to end.",
     blurb:
-      "Rooftop residencies, venue takeovers, yacht and cruise bookings. Resident DJ at Premier Party Cruises and a decade of sets across Austin's best rooms.",
+      "Rooftop residencies, venue takeovers, yacht and cruise bookings. Resident DJ at Premier Party Cruises and over two decades of sets across Austin's best rooms.",
     offerings: [
       "Rooftop & club residencies",
       "Venue takeovers",

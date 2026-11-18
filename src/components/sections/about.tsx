@@ -35,7 +35,7 @@ export function About() {
               as="h2"
               className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.015em] text-ivory"
             >
-              Seventeen years behind the decks. <em className="italic font-light text-champagne">One obsession: the room.</em>
+              Twenty-three years behind the decks. <em className="italic font-light text-champagne">One obsession: the room.</em>
             </TextMaskReveal>
           </Reveal>
 
