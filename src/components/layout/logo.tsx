@@ -11,12 +11,12 @@ export function Logo({ className, variant = "full" }: LogoProps) {
   if (variant === "djtr3y") {
     return (
       <Image
-        src="/media/logo-djtr3y.png"
+        src="/media/logo-djtr3y-glow.png"
         alt="DJ TR3Y"
-        width={594}
-        height={120}
+        width={610}
+        height={140}
         priority
-        className={cn("h-7 w-auto md:h-8", className)}
+        className={cn("h-9 w-auto md:h-10", className)}
       />
     )
   }
