@@ -8,10 +8,12 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { InstagramIcon, TikTokIcon, YouTubeIcon } from "@/components/ui/social-icons"
 import { Logo } from "./logo"
+import { PromoBanner, PROMO_BANNER_HEIGHT, usePromoBannerVisible } from "./promo-banner"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const showPromo = usePromoBannerVisible()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -34,6 +36,7 @@ export function Header() {
           : "bg-transparent"
       )}
     >
+      {showPromo ? <PromoBanner /> : null}
       <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between px-6 md:px-10 lg:px-14 py-5">
         <Link href="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne rounded-full">
           <Logo variant="djtr3y" />
@@ -119,9 +122,10 @@ export function Header() {
       {/* mobile drawer */}
       <div
         className={cn(
-          "lg:hidden fixed inset-0 top-[69px] z-40 bg-ink transition-opacity duration-300",
+          "lg:hidden fixed inset-0 z-40 bg-ink transition-opacity duration-300",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
+        style={{ top: 69 + (showPromo ? PROMO_BANNER_HEIGHT : 0) }}
         aria-hidden={!open}
         inert={!open}
       >
