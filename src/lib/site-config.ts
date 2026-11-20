@@ -64,7 +64,7 @@ export const siteConfig = {
     enabled: true,
     endsAfter: "2027-01-15T23:59:59-06:00",
     message: "Now booking 2027 weddings: book by Jan 15 and your uplighting is free ($300 value)",
-    shortMessage: "2027 weddings: free uplighting if you book by Jan 15",
+    shortMessage: "2027 weddings: free uplighting by Jan 15",
     note: "Limited holiday dates",
     cta: { label: "Check your date", href: "/#booking" },
   },
