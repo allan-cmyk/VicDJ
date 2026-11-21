@@ -49,9 +49,9 @@ export function About() {
           <Reveal delay={0.1}>
             <div className="space-y-5 text-ivory/70 leading-relaxed max-w-xl">
               <p>
-                AV Productionz started in 2008 as a college side hustle in Austin, TX and grew into
-                a full entertainment production company. Today Victor runs sound, lighting, and
-                staging for everything from Driskill ballrooms to rooftop takeovers.
+                Victor has been reading the room since 2003. When he arrived in Austin in 2008, he
+                started AV Productionz, a full entertainment production company. Today he runs sound,
+                lighting, and staging for everything from Driskill ballrooms to rooftop takeovers.
               </p>
               <p>
                 He&rsquo;s the resident DJ at Premier Party Cruises and has produced for
