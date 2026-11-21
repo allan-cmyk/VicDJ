@@ -33,7 +33,7 @@ export const shortBio =
   "DJ Trey is an Austin-based, open-format MC/DJ with 23 years behind the decks and 250+ events produced. He's the resident DJ at Premier Party Cruises and Urban Rooftop, and plays weddings, corporate galas and rooftop nights across Texas."
 
 export const fullBio = [
-  'Victor "DJ Trey" Gutierrez has been reading rooms in Austin since 2003. What started as a college side hustle became AV Productionz in 2008, a full entertainment production company that handles sound, lighting and staging for everything from Driskill ballrooms to rooftop takeovers.',
+  'Victor "DJ Trey" Gutierrez has been reading the room since 2003. When he arrived in Austin in 2008, he started AV Productionz, a full entertainment production company that handles sound, lighting and staging for everything from Driskill ballrooms to rooftop takeovers.',
   "He's the resident DJ at Premier Party Cruises on Lake Travis and Urban Rooftop, and has produced events for Whataburger, Frost Bank, Endeavor Real Estate, Archer Hotel, Kalahari Resorts and thirty-plus more. Open format by training, cinematic by choice, and an MC who keeps the floor full from the first look to the last dance.",
 ]
 
