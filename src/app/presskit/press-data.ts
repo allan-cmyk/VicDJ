@@ -1,11 +1,11 @@
 /**
- * Content for /press, the one-page press kit for promoters, venues and planners.
+ * Content for /presskit, the one-page press kit for promoters, venues and planners.
  * Contact details, socials and the offer line come from site-config.ts, so they stay in step with the rest of the site.
  */
 
 /**
  * Not live yet: the page is kept out of search and the sitemap and isn't linked from the site.
- * To launch, set this to true and add `${siteConfig.url}/press` to src/app/sitemap.ts.
+ * To launch, set this to true and add `${siteConfig.url}/presskit` to src/app/sitemap.ts.
  */
 export const PRESS_LIVE = false
 

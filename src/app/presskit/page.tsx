@@ -20,7 +20,7 @@ import {
 import s from "./press.module.css"
 
 /*
- * /press: one-page press kit for promoters, venues and planners (mixes, bio, press photos, booking).
+ * /presskit: one-page press kit for promoters, venues and planners (mixes, bio, press photos, booking).
  * Standalone like /vic: no site header or footer. Content lives in press-data.ts.
  */
 
@@ -29,18 +29,18 @@ const description =
 const ogImage = { url: "/media/gallery/cruise-dj-trey-booth.jpg", width: 1290, height: 1366, alt: "DJ Trey in the booth" }
 
 export const metadata: Metadata = {
-  title: { absolute: "DJ Trey · Press Kit" },
+  title: { absolute: "DJ Trey · Presskit" },
   description,
   robots: PRESS_LIVE ? { index: true, follow: true } : { index: false, follow: false },
-  alternates: { canonical: "/press" },
+  alternates: { canonical: "/presskit" },
   openGraph: {
     type: "website",
-    url: "/press",
-    title: "DJ Trey · Press Kit",
+    url: "/presskit",
+    title: "DJ Trey · Presskit",
     description: "Austin open-format MC/DJ. Weddings · Corporate · Nightlife · Cruise. Mixes, bio, photos & booking.",
     images: [ogImage],
   },
-  twitter: { card: "summary_large_image", title: "DJ Trey · Press Kit", description, images: [ogImage] },
+  twitter: { card: "summary_large_image", title: "DJ Trey · Presskit", description, images: [ogImage] },
 }
 
 const { contact, socials } = siteConfig
