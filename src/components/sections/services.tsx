@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site-config"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Section } from "@/components/ui/section"
@@ -131,6 +132,10 @@ function ServiceCard({
         <p className="text-ivory/72 leading-relaxed max-w-xl text-base md:text-lg mb-8">
           {service.blurb}
         </p>
+
+        {service.id === "weddings" ? (
+          <p className="-mt-4 mb-8 font-display text-lg text-champagne">{siteConfig.weddingPriceNote}</p>
+        ) : null}
 
         {/* Accent rule */}
         <span
