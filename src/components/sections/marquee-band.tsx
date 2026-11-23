@@ -9,7 +9,7 @@ const DEFAULT_ITEMS = [
   "Cruise",
   "Since 2003",
   "250+ Events",
-  "38 Signature Venues",
+  "100+ Weddings",
 ] as const
 
 interface MarqueeBandProps {

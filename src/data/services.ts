@@ -23,9 +23,9 @@ export const services: readonly Service[] = [
     number: "01",
     eyebrow: "Weddings",
     seoName: "Wedding DJ",
-    title: "Your night, scored.",
+    title: "Your wedding, run start to finish.",
     blurb:
-      "From first look to last dance — ceremony, cocktail, reception, and all the small moments. Custom readings, live mixing, and lighting designed for the room you've chosen.",
+      "From first look to last dance — ceremony, cocktail, reception, and all the small moments. Live mixing, an MC who keeps the night on schedule, and lighting designed for the room you've chosen.",
     offerings: [
       "Ceremony & cocktail",
       "Reception & MC",
@@ -43,9 +43,9 @@ export const services: readonly Service[] = [
     number: "02",
     eyebrow: "Corporate & Private",
     seoName: "Corporate and Private Event DJ",
-    title: "Rooms that move.",
+    title: "Events that run on time and feel alive.",
     blurb:
-      "Galas, brand activations, launches, and conferences. Read the room, control the tempo, keep the energy honest. Trusted by Whataburger, Frost Bank, Endeavor Real Estate, and 30+ more.",
+      "Galas, brand activations, launches, and conferences. Read the room, control the tempo, keep the program on schedule. Trusted by Whataburger, Frost Bank, Endeavor Real Estate, and 30+ more.",
     offerings: [
       "Brand activations & launches",
       "Galas & holiday parties",
@@ -71,7 +71,6 @@ export const services: readonly Service[] = [
       "Venue takeovers",
       "Yacht & cruise events",
       "Open-format sets",
-      "Touring support",
     ],
     icon: Disc3,
     image: "/media/gallery/cruise-atx-disco-cruise.jpg",

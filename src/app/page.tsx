@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
+import { ClientRow } from "@/components/sections/client-row"
 import { MediaFilmstrip } from "@/components/sections/media-filmstrip"
 import { Services } from "@/components/sections/services"
 import { ClientMarquee } from "@/components/sections/client-marquee"
@@ -12,6 +13,7 @@ import { Testimonials } from "@/components/sections/testimonials"
 import { Mixes } from "@/components/sections/mixes"
 import { About } from "@/components/sections/about"
 import { Booking } from "@/components/sections/booking"
+import { BookingNudge } from "@/components/sections/booking-nudge"
 import { siteConfig } from "@/lib/site-config"
 
 export default function HomePage() {
@@ -20,12 +22,15 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ClientRow />
         <MediaFilmstrip />
         <Services />
         <ClientMarquee />
         <Highlights />
+        <BookingNudge line="Picture your night here." />
         <MarqueeBand />
         <Gallery />
+        <BookingNudge line="Is your date still open?" />
         <InstagramBand />
         {siteConfig.features.enableTestimonials ? <Testimonials /> : null}
         {siteConfig.features.enableMixes ? <Mixes /> : null}
