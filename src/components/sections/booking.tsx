@@ -23,6 +23,7 @@ export function Booking() {
             Share a few details about your event and we&rsquo;ll get back within 24 hours with
             availability, packages, and a quote. For anything urgent, call or DM.
           </p>
+          <p className="mt-4 max-w-md font-display text-lg text-champagne">{siteConfig.weddingPriceNote}</p>
           <BookingOffer />
 
           <ul className="mt-10 space-y-5">

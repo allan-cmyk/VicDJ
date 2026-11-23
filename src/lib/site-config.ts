@@ -60,6 +60,9 @@ export const siteConfig = {
   ],
   // Slim offer strip above the header. Set `enabled: false` to remove it early.
   // It also hides itself automatically after `endsAfter` (Central time).
+  // Starting wedding price (the Basic package in the 2026 brochure: live DJ/MC, sound, wireless mic, 5 hours).
+  // Shown under the Weddings service and beside the booking form.
+  weddingPriceNote: "Wedding packages from $1,750: live DJ, MC and sound.",
   promoBanner: {
     enabled: true,
     endsAfter: "2027-01-15T23:59:59-06:00",
