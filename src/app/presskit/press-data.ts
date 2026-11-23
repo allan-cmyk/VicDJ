@@ -12,7 +12,7 @@ export const PRESS_LIVE = false
 export const pressFacts = [
   { value: "23", label: "years behind the decks" },
   { value: "250+", label: "events produced" },
-  { value: "38", label: "signature venues" },
+  { value: "100+", label: "weddings" },
   { value: "2", label: "residencies: Premier Party Cruises · Urban Rooftop" },
 ] as const
 
