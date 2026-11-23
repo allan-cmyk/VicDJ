@@ -47,3 +47,13 @@ export const clients: readonly Client[] = [
   { name: "Palm Door on Sabine", category: "nightlife" },
   { name: "The Austonian", category: "hospitality" },
 ] as const
+
+/** The strongest names, shown as a still row right under the first screen. Each must also be in the list above. */
+export const featuredClients: readonly string[] = [
+  "The Driskill",
+  "Archer Hotel at the Domain",
+  "Kalahari Resorts Round Rock",
+  "Whataburger",
+  "Frost Bank Tower",
+  "The Austonian",
+]

@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
+import { ClientRow } from "@/components/sections/client-row"
 import { MediaFilmstrip } from "@/components/sections/media-filmstrip"
 import { Services } from "@/components/sections/services"
 import { ClientMarquee } from "@/components/sections/client-marquee"
@@ -21,6 +22,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ClientRow />
         <MediaFilmstrip />
         <Services />
         <ClientMarquee />
