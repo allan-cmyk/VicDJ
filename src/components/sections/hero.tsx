@@ -97,15 +97,13 @@ export function Hero({
               Austin · Since {siteConfig.since}
             </EyebrowLabel>
             <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory">
-              Over 23 years
+              A full <em className="italic font-light text-champagne">dance floor</em>,
               <br />
-              behind the <em className="italic font-light text-champagne">decks</em>,
-              <br />
-              <span className="text-ivory/85">for the nights people don&rsquo;t forget.</span>
+              <span className="text-ivory/85">from the first song to the last.</span>
             </h1>
             <p className="mt-8 max-w-xl text-base md:text-lg text-ivory/70 leading-relaxed">
-              Weddings. Corporate galas. Rooftop nights. Yacht &amp; cruise residencies. Sound,
-              staging, and a crowd that stays on the floor — produced end to end by DJ Trey.
+              DJ, MC, sound and lighting for Austin weddings and corporate events. 23 years, 100+
+              weddings, in rooms like The Driskill and Archer Hotel.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button asChild variant="primary" size="lg">
