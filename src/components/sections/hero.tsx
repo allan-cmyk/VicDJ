@@ -96,7 +96,7 @@ export function Hero({
             <EyebrowLabel className="mb-6">
               Austin · Since {siteConfig.since}
             </EyebrowLabel>
-            <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory">
+            <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory text-balance">
               A full <em className="italic font-light text-champagne">dance floor</em>,
               <br />
               <span className="text-ivory/85">from the first song to the last.</span>
