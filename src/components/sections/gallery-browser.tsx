@@ -24,7 +24,9 @@ const TILE_MEDIA_CLASSES = cn(
   "saturate-[.15] brightness-[.85] contrast-[1.05]",
   "group-hover:saturate-100 group-hover:brightness-100",
   "group-focus-within:saturate-100 group-focus-within:brightness-100",
-  "group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+  "group-hover:scale-[1.03] motion-reduce:group-hover:scale-100",
+  // Phones and tablets have no hover, so show full color there all the time.
+  "[@media(hover:none)]:saturate-100 [@media(hover:none)]:brightness-100"
 )
 
 /**
@@ -176,7 +178,7 @@ function GalleryTileView({
           {/* warm overlay that lifts on hover */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-ink/55 via-[color:var(--champagne)]/5 to-ink/70 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-0"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-ink/55 via-[color:var(--champagne)]/5 to-ink/70 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-0 [@media(hover:none)]:opacity-0"
           />
           {/* bottom scrim for caption legibility */}
           <div
@@ -200,7 +202,7 @@ function GalleryTileView({
           </span>
 
           {tile.caption ? (
-            <figcaption className="absolute bottom-4 left-5 right-5 translate-y-1 font-mono text-[10px] uppercase tracking-[0.24em] text-ivory/85 opacity-0 transition-[transform,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+            <figcaption className="absolute bottom-4 left-5 right-5 translate-y-1 font-mono text-[10px] uppercase tracking-[0.24em] text-ivory/85 opacity-0 transition-[transform,opacity] duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100">
               {tile.caption}
             </figcaption>
           ) : null}
