@@ -8,7 +8,7 @@ const DEFAULT_ITEMS = [
   "Nightlife",
   "Cruise",
   "Since 2003",
-  "250+ Events",
+  "2,000+ Events",
   "100+ Weddings",
 ] as const
 

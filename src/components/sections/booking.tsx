@@ -5,7 +5,7 @@ import { TextMaskReveal } from "@/components/motion/text-mask-reveal"
 import { LazyBookingForm } from "@/components/forms/lazy-booking-form"
 import { siteConfig } from "@/lib/site-config"
 import { BookingOffer } from "./booking-offer"
-import { Phone, Mail, MapPin } from "lucide-react"
+import { Check, Phone, Mail, MapPin } from "lucide-react"
 
 export function Booking() {
   return (
@@ -25,6 +25,17 @@ export function Booking() {
           </p>
           <p className="mt-4 max-w-md font-display text-lg text-champagne">{siteConfig.weddingPriceNote}</p>
           <BookingOffer />
+          <div className="mt-8 max-w-md border-l border-champagne/40 pl-5">
+            <p className="font-display text-lg leading-snug text-ivory">{siteConfig.bookingPromises.lead}</p>
+            <ul className="mt-3 space-y-1.5 text-sm text-ivory/70">
+              {siteConfig.bookingPromises.items.map((item) => (
+                <li key={item} className="flex gap-2.5">
+                  <Check size={14} className="mt-[3px] shrink-0 text-champagne" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <ul className="mt-10 space-y-5">
             <ContactRow icon={<Phone size={14} />} label="Call" value={siteConfig.contact.phone} href={siteConfig.contact.phoneHref} />

@@ -37,6 +37,7 @@ export const clients: readonly Client[] = [
   { name: "Brasstap", category: "nightlife" },
   { name: "The Veranda in San Marcos", category: "hospitality" },
   { name: "The Driskill", category: "hospitality" },
+  { name: "W Austin", category: "hospitality" },
   { name: "512 Bar", category: "nightlife" },
   { name: "Old School Bar and Grill", category: "nightlife" },
   { name: "Trophy Room", category: "nightlife" },
@@ -50,10 +51,10 @@ export const clients: readonly Client[] = [
 
 /** The strongest names, shown as a still row right under the first screen. Each must also be in the list above. */
 export const featuredClients: readonly string[] = [
-  "The Driskill",
   "Archer Hotel at the Domain",
   "Kalahari Resorts Round Rock",
+  "W Austin",
+  "The Driskill",
   "Whataburger",
   "Frost Bank Tower",
-  "The Austonian",
 ]

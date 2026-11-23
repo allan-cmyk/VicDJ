@@ -54,7 +54,7 @@ export const siteConfig = {
   ],
   stats: [
     { value: "2003", label: "Since" },
-    { value: "250+", label: "Events" },
+    { value: "2,000+", label: "Events" },
     { value: "100+", label: "Weddings" },
     { value: "24 hr", label: "Reply time" },
   ],
@@ -62,6 +62,15 @@ export const siteConfig = {
   // It also hides itself automatically after `endsAfter` (Central time).
   // Starting wedding price (the Basic package in the 2026 brochure: live DJ/MC, sound, wireless mic, 5 hours).
   // Shown under the Weddings service and beside the booking form.
+  // Vic's answers to Allan's review (Nov 23 2026). Shown beside the booking form; only promises he keeps every time.
+  bookingPromises: {
+    lead: "One DJ. One event per date. Once yours is booked, it's gone.",
+    items: [
+      "You get Vic, not a substitute DJ.",
+      "The quote is the price. No surprise fees.",
+      "Carries event liability insurance.",
+    ],
+  },
   weddingPriceNote: "Wedding packages from $1,750: live DJ, MC and sound.",
   promoBanner: {
     enabled: true,
