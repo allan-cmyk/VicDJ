@@ -96,10 +96,10 @@ export function Hero({
             <EyebrowLabel className="mb-6">
               Austin · Since {siteConfig.since}
             </EyebrowLabel>
-            <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory text-balance">
+            <h1 className="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-[-0.02em] text-ivory">
               A full <em className="italic font-light text-champagne">dance floor</em>,
               <br />
-              <span className="text-ivory/85">from the first song to the last.</span>
+              <span className="text-ivory/85">from the first song <span className="whitespace-nowrap">to the last.</span></span>
             </h1>
             <p className="mt-8 max-w-xl text-base md:text-lg text-ivory/70 leading-relaxed">
               DJ, MC, sound and lighting for Austin weddings and corporate events. 23 years, 100+
