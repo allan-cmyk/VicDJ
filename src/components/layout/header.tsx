@@ -83,7 +83,7 @@ export function Header() {
             <YouTubeIcon size={15} />
           </Link>
           <Button asChild variant="primary" size="sm">
-            <Link href="/#booking">Book DJ Trey</Link>
+            <Link href="/#booking">Check my date</Link>
           </Button>
         </div>
 
@@ -178,7 +178,7 @@ export function Header() {
               <span className="font-mono text-sm tracking-wide">{siteConfig.socials.youtube.handle}</span>
             </Link>
             <Button asChild variant="primary" size="md" className="mt-4">
-              <Link href="/#booking" onClick={() => setOpen(false)}>Book DJ Trey</Link>
+              <Link href="/#booking" onClick={() => setOpen(false)}>Check my date</Link>
             </Button>
           </div>
         </div>
