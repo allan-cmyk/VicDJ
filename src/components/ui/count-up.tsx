@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 
 interface CountUpProps {
-  /** The final rendered value, e.g. "250+" or "2008" or "38". */
+  /** The final rendered value, e.g. "2,000+" or "2003" or "24 hr". */
   value: string
   /** Duration in ms. Default 1600. */
   duration?: number
@@ -12,7 +12,7 @@ interface CountUpProps {
 
 /**
  * Counts up to `value` when scrolled into view. The real value is what renders on
- * the server, so crawlers and no-JS visitors read "250+", never a placeholder zero.
+ * the server, so crawlers and no-JS visitors read "2,000+", never a placeholder zero.
  * The zeroed start is applied in the browser only, on an element still off screen.
  */
 export function CountUp({ value, duration = 1600, className }: CountUpProps) {
@@ -20,13 +20,16 @@ export function CountUp({ value, duration = 1600, className }: CountUpProps) {
 
   useEffect(() => {
     const el = ref.current
-    const match = value.match(/^(\d+)(.*)$/)
+    const match = value.match(/^(\d[\d,]*)(.*)$/)
     if (!el || !match) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
     const [, digits, suffix] = match
-    const target = parseInt(digits, 10)
-    const format = (n: number) => `${Math.round(n).toString().padStart(digits.length, "0")}${suffix}`
+    const target = parseInt(digits.replace(/,/g, ""), 10)
+    // "2,000+" counts with thousands commas; "2003" keeps its leading zeros while counting.
+    const format = digits.includes(",")
+      ? (n: number) => `${Math.round(n).toLocaleString("en-US")}${suffix}`
+      : (n: number) => `${Math.round(n).toString().padStart(digits.length, "0")}${suffix}`
 
     el.textContent = format(0)
 
