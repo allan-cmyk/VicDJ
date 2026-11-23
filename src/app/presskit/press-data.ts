@@ -11,7 +11,7 @@ export const PRESS_LIVE = false
 
 export const pressFacts = [
   { value: "23", label: "years behind the decks" },
-  { value: "250+", label: "events produced" },
+  { value: "2,000+", label: "events played" },
   { value: "100+", label: "weddings" },
   { value: "2", label: "residencies: Premier Party Cruises · Urban Rooftop" },
 ] as const
@@ -30,7 +30,7 @@ export const pressMixes: readonly { title: string; sub?: string; src: string }[]
 export const pressReel = { src: "/media/hero-sunset-720.mp4", poster: "/media/hero-sunset-poster.jpg" }
 
 export const shortBio =
-  "DJ Trey is an Austin-based, open-format MC/DJ with 23 years behind the decks and 250+ events produced. He's the resident DJ at Premier Party Cruises and Urban Rooftop, and plays weddings, corporate galas and rooftop nights across Texas."
+  "DJ Trey is an Austin-based, open-format MC/DJ with 23 years behind the decks and over 2,000 events played. He's the resident DJ at Premier Party Cruises and Urban Rooftop, and plays weddings, corporate galas and rooftop nights across Texas."
 
 export const fullBio = [
   'Victor "DJ Trey" Gutierrez has been reading the room since 2003. When he arrived in Austin in 2008, he started AV Productionz, a full entertainment production company that handles sound, lighting and staging for everything from Driskill ballrooms to rooftop takeovers.',
@@ -58,7 +58,7 @@ export const pressServices = [
 
 export const pressClients = [
   "Whataburger", "Frost Bank Tower", "Endeavor Real Estate", "Archer Hotel at the Domain",
-  "Kalahari Resorts Round Rock", "The Driskill", "The Austonian", "The Bowie on 4th",
+  "Kalahari Resorts Round Rock", "The Driskill", "W Austin", "The Austonian", "The Bowie on 4th",
   "Premier Party Cruises", "Urban Rooftop", "Skyhouse", "Flatiron at the Domain",
   "Highland Lounge", "Speakeasy on Congress", "77 Degrees Rooftop", "Rose Room",
   "Oskar Blues Brewery", "Celis Brewery", "Cru Wine Bar", "Palm Door on Sabine",
