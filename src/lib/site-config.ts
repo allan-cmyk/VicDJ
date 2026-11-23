@@ -56,7 +56,7 @@ export const siteConfig = {
     { value: "2003", label: "Since" },
     { value: "250+", label: "Events" },
     { value: "100+", label: "Weddings" },
-    { value: "38", label: "Signature venues" },
+    { value: "24 hr", label: "Reply time" },
   ],
   // Slim offer strip above the header. Set `enabled: false` to remove it early.
   // It also hides itself automatically after `endsAfter` (Central time).
