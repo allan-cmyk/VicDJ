@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/reveal"
 import { TextMaskReveal } from "@/components/motion/text-mask-reveal"
 import { LazyBookingForm } from "@/components/forms/lazy-booking-form"
 import { siteConfig } from "@/lib/site-config"
+import { BookingOffer } from "./booking-offer"
 import { Phone, Mail, MapPin } from "lucide-react"
 
 export function Booking() {
@@ -11,17 +12,18 @@ export function Booking() {
     <Section id="booking" tone="ink-soft">
       <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
-          <EyebrowLabel className="mb-4">Book DJ Trey</EyebrowLabel>
+          <EyebrowLabel className="mb-4">Booking</EyebrowLabel>
           <TextMaskReveal
             as="h2"
             className="font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1.02] tracking-[-0.015em] text-ivory"
           >
-            Let&rsquo;s design your night.
+            Check your date.
           </TextMaskReveal>
           <p className="mt-6 text-ivory/70 leading-relaxed max-w-md">
             Share a few details about your event and we&rsquo;ll get back within 24 hours with
             availability, packages, and a quote. For anything urgent, call or DM.
           </p>
+          <BookingOffer />
 
           <ul className="mt-10 space-y-5">
             <ContactRow icon={<Phone size={14} />} label="Call" value={siteConfig.contact.phone} href={siteConfig.contact.phoneHref} />

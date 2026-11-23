@@ -157,7 +157,11 @@ function ServiceCard({
           className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-ivory hover:text-champagne transition-colors group/link"
         >
           <span className="border-b border-ivory/20 pb-1 group-hover/link:border-champagne transition-colors">
-            Book this set
+            {service.id === "weddings"
+              ? "Check my wedding date"
+              : service.id === "corporate"
+                ? "Get a corporate quote"
+                : "Check my date"}
           </span>
           <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
         </a>

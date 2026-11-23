@@ -31,44 +31,33 @@ export type Highlight = {
 
 export const highlights: readonly Highlight[] = [
   {
-    category: "corporate",
-    title: "Frost Fest",
-    detail: "Frost Bank Tower · Downtown Austin",
+    category: "weddings",
+    title: "Head table at sunset",
+    detail: "Wedding reception · Austin",
     media: {
       type: "image",
-      src: "/media/gallery/frost-bank-tower.jpg",
-      alt: "DJ rig at Frost Fest atop Frost Bank Tower, downtown Austin",
-    },
-  },
-  {
-    category: "cruise",
-    title: "Resident on the water",
-    detail: "Premier Party Cruises · Lake Travis",
-    media: {
-      type: "image",
-      src: "/media/gallery/cruise-decks-crowd.jpg",
-      alt: "DJ Trey behind the decks on a Premier Party Cruises barge, crowd dancing under the sun",
-    },
-  },
-  {
-    category: "nightlife",
-    title: "3:30am, still going",
-    detail: "Highland Lounge · Austin",
-    media: {
-      type: "video",
-      src: "/media/gallery/tile-highland-nightclub.mp4",
-      poster: "/media/gallery/tile-highland-nightclub-poster.jpg",
-      alt: "DJ Trey on the mic at Highland Lounge, 3:30am",
+      src: "/media/gallery/wedding-head-table-sunset.jpg",
+      alt: "DJ Trey with the bride and groom at the head table in front of a sunset window",
     },
   },
   {
     category: "weddings",
-    title: "Flores Wedding",
-    detail: "San Luis Resort · Galveston",
+    title: "First dance, custom monogram",
+    detail: "Wedding reception",
     media: {
       type: "image",
-      src: "/media/gallery/flores-wedding-san-luis.jpg",
-      alt: "Luxury ballroom wedding with blue patterned ceiling lighting — Flores Wedding, San Luis Resort",
+      src: "/media/gallery/wedding-first-dance-monogram.jpg",
+      alt: "Bride and groom's first dance in a stone hall with a custom monogram projected on the wall",
+    },
+  },
+  {
+    category: "corporate",
+    title: "Full production",
+    detail: "Truss, uplighting & sound",
+    media: {
+      type: "image",
+      src: "/media/gallery/corporate-truss-uplighting.jpg",
+      alt: "DJ Trey at a booth framed by a lighting truss with blue uplighting at an event hall",
     },
   },
   {
@@ -100,6 +89,16 @@ export const highlights: readonly Highlight[] = [
       type: "image",
       src: "/media/gallery/cruise-downtown-skyline.jpg",
       alt: "DJ Trey in a red blazer at the decks on a boat in front of the downtown Austin skyline",
+    },
+  },
+  {
+    category: "cruise",
+    title: "Resident on the water",
+    detail: "Premier Party Cruises · Lake Travis",
+    media: {
+      type: "image",
+      src: "/media/gallery/cruise-decks-crowd.jpg",
+      alt: "DJ Trey behind the decks on a Premier Party Cruises barge, crowd dancing under the sun",
     },
   },
 ] as const

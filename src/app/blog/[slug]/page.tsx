@@ -129,7 +129,7 @@ export default async function PostPage({ params }: PostPageProps) {
               Share your date and venue, and we&rsquo;ll reply within 24 hours with availability and a quote.
             </p>
             <Button asChild variant="primary" size="md" className="mt-6">
-              <Link href="/#booking">Book DJ Trey</Link>
+              <Link href="/#booking">Check my date</Link>
             </Button>
           </div>
         </article>

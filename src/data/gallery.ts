@@ -26,21 +26,22 @@ export const GALLERY_FILTERS: readonly { value: GalleryFilter; label: string }[]
  * through the category filters and "All".
  */
 export const FEATURED_GALLERY_SRCS: readonly string[] = [
-  "/media/gallery/tile-club-set.mp4",
-  "/media/gallery/wedding-first-dance-monogram.jpg",
-  "/media/gallery/corporate-truss-uplighting.jpg",
-  "/media/gallery/tile-reception-packed-floor.mp4",
-  "/media/gallery/cruise-downtown-skyline.jpg",
-  "/media/gallery/nightlife-stage-gold.jpg",
+  // Weddings first, corporate second, then nightlife and cruise (Allan's review, Nov 2026).
   "/media/gallery/wedding-head-table-sunset.jpg",
-  "/media/gallery/tile-ballroom-booth-view.mp4",
-  "/media/gallery/cruise-atx-disco-cruise.jpg",
-  "/media/gallery/nightlife-new-years-booth.jpg",
+  "/media/gallery/tile-reception-packed-floor.mp4",
+  "/media/gallery/wedding-first-dance-monogram.jpg",
   "/media/gallery/tile-reception-couple-dance.mp4",
-  "/media/gallery/frost-bank-tower.jpg",
   "/media/gallery/wedding-cold-sparks.jpg",
+  "/media/gallery/wedding-floral-backdrop.jpg",
+  "/media/gallery/corporate-truss-uplighting.jpg",
+  "/media/gallery/tile-ballroom-booth-view.mp4",
+  "/media/gallery/kalahari-rig.jpg",
+  "/media/gallery/tile-club-set.mp4",
+  "/media/gallery/nightlife-stage-gold.jpg",
+  "/media/gallery/cruise-downtown-skyline.jpg",
+  "/media/gallery/nightlife-new-years-booth.jpg",
   "/media/gallery/tile-rooftop-night-set.mp4",
-  "/media/gallery/cruise-decks-crowd.jpg",
+  "/media/gallery/cruise-atx-disco-cruise.jpg",
 ]
 
 export type GalleryTile =

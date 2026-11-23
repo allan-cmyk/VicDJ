@@ -18,7 +18,7 @@ export function ClientMarquee() {
           </h2>
         </div>
         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ivory/50">
-          {clients.length} signature rooms &amp; partners
+          {`${clients.length} signature rooms & partners`}
         </p>
       </div>
 
