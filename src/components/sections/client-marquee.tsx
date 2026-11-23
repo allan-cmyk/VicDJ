@@ -17,9 +17,6 @@ export function ClientMarquee() {
             The venues, brands &amp; couples that keep booking him back.
           </h2>
         </div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ivory/50">
-          {`${clients.length} signature rooms & partners`}
-        </p>
       </div>
 
       <div className="group relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
